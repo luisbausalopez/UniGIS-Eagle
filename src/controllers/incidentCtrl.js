@@ -24,13 +24,13 @@ icm.controller('IncidentCtrl' ,['$scope', 'Core', '$stateParams', '$location', '
     $scope.projectTypes =
         [
             { id: 0, name: "LIVE" },
-            { id: 1, name: "Oefening" }
+            { id: 1, name: "Exercise" }
         ];
     $scope.projectStatuses =
         [
-            { id: 0, name: "Actief" },
-            { id: 1, name: "Gepland" },
-            { id: 2, name: "Gesloten" }
+            { id: 0, name: "Active" },
+            { id: 1, name: "Planned" },
+            { id: 2, name: "Closed" }
         ];
 
     /* Datepicker configuration */

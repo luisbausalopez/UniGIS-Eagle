@@ -1,7 +1,7 @@
 <div class="row">
     <div class="container-fluid">
-        <a ui-sref="incidenten.incident.beeld.kaart" class="pull-right btn btn-default">&laquo; kaart</a>
-        <a ui-sref="incidenten.incident.beeld" class="pull-right btn btn-default">&lsaquo; tekst en kaart</a>
+        <a ui-sref="incidenten.incident.beeld.kaart" class="pull-right btn btn-default">&laquo; map</a>
+        <a ui-sref="incidenten.incident.beeld" class="pull-right btn btn-default">&lsaquo; text and map</a>
     </div>
 </div>
 <div class="row fill">
@@ -17,7 +17,7 @@
                     <hr class="small"/>
                     <div class="alert alert-warning alert-dismissable" ng-class="{'hidden':onderdeel.zeker}">
                         <button type="button" class="close" ng-click="onderdeel.zeker = true" >&times;</button>
-                        Klik nogmaals op annuleren om de wijzigingen ongedaan te maken
+                        Click Cancel again to undo the changes
                     </div>
                     <p class="list-group-item-text beeldcontent"  ng-class="{'hidden': onderdeel.isedit}" ng-bind-html="data.beeldcontentDiff(item)"  ></p>
                     <div class="list-group-item-text" text-angular ta-toolbar="[['bold', 'italics', 'underline', 'ul', 'ol'],['insertLink']]" ng-class="{'hidden': !onderdeel.isedit}" ng-model="onderdeel.contentedit" >
@@ -31,7 +31,7 @@
                     <hr class="small"/>
                     <div class="alert alert-warning alert-dismissable" ng-class="{'hidden':onderdeel.zeker}">
                         <button type="button" class="close" ng-click="onderdeel.zeker = true" >&times;</button>
-                        Klik nogmaals op annuleren om de wijzigingen ongedaan te maken
+                        Click Cancel again to undo the changes
                     </div>
                     <p class="list-group-item-text beeldcontent"  ng-class="{'hidden': onderdeel.isedit}" ng-bind-html="data.beeldcontentDiff()"  ></p>
                     <div class="list-group-item-text" text-angular ta-toolbar="[['bold', 'italics', 'underline', 'ul', 'ol'],['insertLink']]" ng-class="{'hidden': !onderdeel.isedit}" ng-model="onderdeel.contentedit" >

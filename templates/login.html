@@ -1,19 +1,19 @@
 <div ng-controller="UserCtrl" class="col-sm-6 col-sm-offset-3 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3" >
     <div class="row">
-        <h4>Login op het ICMs </h4>
+        <h4>Login to the UniGIS Eagle </h4>
         <input type="text" ng-model="loginName" autofocus="true" typeahead="user.name for user in data.users | filter:$viewValue | limitTo:8" typeahead-editable='true' typeahead-on-select="onSelect($item)" class="form-control">
         <div class="btn-group pull-right">
-            <button type="button" class="btn btn-danger" ng-click="data.user=''">Annuleer</button>
+            <button type="button" class="btn btn-danger" ng-click="data.user=''">Cancel</button>
             <button type="button" class="btn btn-success" ng-click="login()" ng-disabled="loginName === ''">Login</button>
         </div>
     </div>
     <div class="row">
         <div class="row alert alert-warning alert-dismissable"  ng-hide="!confirmNewUser">
-            <h3>Gebruiker toevoegen?</h3>
-            <p>Wilt u de gebruiker '{{loginName}}' aanmaken?</p>
+            <h3>Add user?</h3>
+            <p>Do you want to create the user '{{loginName}}'?</p>
             <br>
-            <button class="btn" ng-click="newUserCancel()">Annuleer</button>
-            <button class="btn btn-success" ng-click="newUser()" >Maak nieuwe gebruiker aan</button>
+            <button class="btn" ng-click="newUserCancel()">Cancel</button>
+            <button class="btn btn-success" ng-click="newUser()" >Yes, create new user</button>
         </div>
     </div>
     <div class="row">

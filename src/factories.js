@@ -18,7 +18,8 @@ icm.factory('Beelden', ['$rootScope', function( $rootScope ) {
 /*TT: Cow temporarily moved to a global because signalR breaks from within a factory */
 var cow = new Cow.core({
       //wsUrl: '/Cow/signalr'
-	  wsUrl: '/Cow2/hhnk/signalr'   //# hhnk
+	  //wsUrl: '/Cow2/hhnk/signalr'   //# hhnk
+	  wsUrl: '/Cow2/unigis/signalr'   //# UniGIS
 	  //wsUrl: '/Cow2/geofort/signalr' //# geofort
       //wsUrl: 'wss://websocket.geodan.nl/icms'
     });   
@@ -158,7 +159,7 @@ icm.factory('Utils', ['$rootScope','Core', function ($rootScope,Core) {
         }
         var lastChange =  new Date(item.timestamp());
         lastChange = lastChange.getDate() + '-' + (lastChange.getMonth()+1) + '-' + lastChange.getFullYear() + ' ' + lastChange.getHours() + ':' + (lastChange.getMinutes() < 10 ? '0' + lastChange.getMinutes() : lastChange.getMinutes()); // dd-MM-yyyy HH:mm
-        return '<h5><small>Laatste wijziging: ' + lastChange + '</small></h5>' + TextDifference(oldValue, item.data('beeldcontent'));
+        return '<h5><small>Last edited: ' + lastChange + '</small></h5>' + TextDifference(oldValue, item.data('beeldcontent'));
       }
     }; 
 
