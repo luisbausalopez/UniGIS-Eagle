@@ -1,32 +1,61 @@
-.nav, .pagination, .carousel, .panel-title a { cursor: pointer; }
+/*
+* Leaflet default 
+*/
+html, body{
+    height: 100%;
+}
 
-.visible-xs.collapse {
-display: none!important;
+.angular-leaflet-map {
+    height: 100%;
 }
-.visible-xs.collapse.in {
-display: block!important;
+
+.leaflet-top, .leaflet-bottom {
+  z-index:100 !important;
 }
+.klik {
+  cursor:pointer;
+}
+.kaartlagen {
+    display: block;
+    float: right;
+    position: absolute;
+    right: 0;
+    top: 0;
+    background:white;
+    z-index:1001;
+}
+
 .navbar.header {
-    min-height: 30px;
+    min-height: 0px;
     margin-bottom: 0px;
+    background: white;
+    border-bottom: solid 1px #e7e7e7;
 }
 
 .navbar-fixed-top.header {
     top: 50px;
 
 }
+ol.breadcrumb {
+  margin: 3px;
+  padding: 0px;
+  background: white;
+}
 /*
  * Base structure
  */
 
 /* Move down content because we have a fixed navbar that is 50px tall */
-body {
-  padding-top: 80px;
+.alles {
+  position: absolute;
+  top:80px;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: block;
+  overflow-x: hidden;
 }
 
-.kaart {
-  height: 100%;
-}
 
 /*
  * Global add-ons
@@ -37,16 +66,16 @@ body {
   border-bottom: 1px solid #eee;
 }
 
+hr.small {
+  margin: 1px;
+  margin-bottom:5px;
+}
 
 /*
  * Sidebar
  */
 
 /* Hide for mobile, show later */
-.sidebar {
-  display: none;
-}
-@media (min-width: 768px) {
   .sidebar {
     position: fixed;
     top: 0;
@@ -54,11 +83,26 @@ body {
     bottom: 0;
     z-index: 1000;
     display: block;
-    padding: 80px 20px 20px;
+    padding: 80px 0px 0px;
     background-color: #f5f5f5;
     border-right: 1px solid #eee;
-  }
+    overflow: auto;
+
 }
+/*OBS
+.kaart {
+  min-height: 400px;
+  top: 140px;
+  width: 100%;
+}
+.kaarten {
+    position: fixed;
+    top: 110px;
+    right: 0;
+    bottom: 0;
+    z-index: 1000;
+    display: block;
+}*/
 
 /* Sidebar navigation */
 .nav-sidebar {
@@ -75,6 +119,9 @@ body {
   background-color: #428bca;
 }
 
+.beelden p {
+padding: 5px;
+}
 
 /*
  * Main content
@@ -82,6 +129,8 @@ body {
 
 .main {
   padding: 10px;
+  height: 100%;
+  min-height: 100%;
 }
 @media (min-width: 768px) {
   .main {
@@ -93,6 +142,14 @@ body {
   margin-top: 0;
 }
 
+.beeldcontent div {
+  margin-bottom: 5px;
+}
+/** TT: added this to set the bootstraps row height in order to set the map height to 100%**/
+.fill {
+    height: 98%;
+    min-height: 98%;
+}
 
 /*
  * Placeholder dashboard ideas
@@ -155,6 +212,22 @@ body {
   border-top-right-radius: 0;
 }
 
+/**
+    Text Angular styles
+**/
+.ta-editor {
+    height: 100%;
+
+}
+/*
+Text Diff
+*/
+del { background-color: #a94442; color: white; text-decoration:line-through; }
+ins { color: #dd0000; font-weight:bold; text-decoration: none;}
+
+.delete { background-color: #fcf8e3; text-decoration:line-through; }
+.insert { color: #dd0000; font-weight:bold; text-decoration: none;}
+
 
 /**
     Map styles
@@ -169,4 +242,29 @@ body {
     height:0px;
     border:1px solid #999;
     margin:10px 50px;
+}
+/*mapmenu*/
+.menu {
+    font-size: 16px;
+    font-weight: bold;
+    fill: steelBlue;
+    stroke: None;
+    stroke-width: 1px;
+    text-anchor: middle;
+    opacity: 1;
+}
+.menu_shadow {
+    font-size: 16px;
+    font-weight: bold;
+    fill: white;
+    stroke: white;
+    stroke-width: 3px;
+    stroke-opacity: .8;
+    text-anchor: middle;
+    opacity: 1;
+}
+
+div.page  { 
+	overflow: auto;
+	height: 100%;
 }

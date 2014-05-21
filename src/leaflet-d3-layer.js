@@ -8,15 +8,19 @@ Based on: https://github.com/rclark/leaflet-d3-layer/blob/master/dist/scripts/le
   root = this;
 
   L.GeoJSON.d3 = L.GeoJSON.extend({
+    
     initialize: function(geojson, options) {
       this.geojson = geojson;
       this.core = options.core;
       options = options || {};
       options.layerId = options.layerId || ("leaflet-d3-layer-" + (Math.floor(Math.random() * 101)));
       options.onEachFeature = function(geojson, layer) {};
+      
       L.setOptions(this, options);
-      return this._layers = {};
+      this._layers = {};
+      return this._layers;
     },
+    
     data: function(data){
         if (data){
             this.geojson = data;
@@ -96,9 +100,12 @@ Based on: https://github.com/rclark/leaflet-d3-layer/blob/master/dist/scripts/le
 		};
 		this.labelgenerator = labelgenerator; 
 		var click = function(d,e){
+		    var element = this;
+		    var event = d3.event;
 		    d3.event.stopPropagation();//Prevent the map from firing click event as well
 		    if (onClick){
-		        onClick(d,self);
+		        //onClick(d,self);
+		        onClick(d,self._svg,element, event);
 		    }
 		};
 		
@@ -108,7 +115,8 @@ Based on: https://github.com/rclark/leaflet-d3-layer/blob/master/dist/scripts/le
 		    }
 		    d3.select(this)
 		        .transition().duration(100)
-		        .style('opacity',d.origopac * 0.2);
+		        .style('opacity',d.origopac * 0.6);
+		    d3.select(this.parentNode).selectAll('text').style('opacity',0);
 		    
 		    if (mouseoverContent){
 		        /*
@@ -120,14 +128,19 @@ Based on: https://github.com/rclark/leaflet-d3-layer/blob/master/dist/scripts/le
                         .style("top", (d3.event.pageY - 28) + "px");
                  */
                 }
+            var event = d3.event;
+            var element = this;
 		    if (onMouseover){
-		        onMouseover(d,this);
+		        //onMouseover(d,this);
+		        onMouseover(d,self._svg,element, event);
 		    }
 		};
 		var mouseout = function(d){
 		    d3.select(this)
 		        .transition().duration(100)
 		        .style('opacity',d.origopac);
+		    d3.select(this.parentNode).selectAll('text').style('opacity',1);
+		    d3.selectAll('.textbox').remove();
 		    if (mouseoverContent){
 		        /*
 		        tooltipdiv.transition()        
@@ -141,7 +154,7 @@ Based on: https://github.com/rclark/leaflet-d3-layer/blob/master/dist/scripts/le
         var build = function(d){
           var entity = d3.select(this);
           //Point/icon feature
-          if (d.style && d.style.icon && d.geometry.type == 'Point'){ 
+          if (d.properties['marker-url'] && d.geometry.type == 'Point'){ 
               var x = project(d.geometry.coordinates)[0];
               var y = project(d.geometry.coordinates)[1];
               var img = entity.append("image")
@@ -164,13 +177,12 @@ Based on: https://github.com/rclark/leaflet-d3-layer/blob/master/dist/scripts/le
 		var styling = function(d){
 		  var entity = d3.select(this);
 		  //Point/icon feature
-		  if (d.style && d.style.icon && d.geometry.type == 'Point'){ 
+		  if (d.properties['marker-url'] && d.geometry.type == 'Point'){ 
 		      var x = project(d.geometry.coordinates)[0];
               var y = project(d.geometry.coordinates)[1];
 		      var img = entity.select("image")
                     .attr("xlink:href", function(d){
-                            if (d.style.icon) {return d.style.icon;}
-                            else {return "./mapicons/stratego/stratego-flag.svg";} //TODO put normal icon
+                            return d.style['marker-url'];
                     })
                     .classed("nodeimg",true)
                     .attr("width", 32)
@@ -183,36 +195,30 @@ Based on: https://github.com/rclark/leaflet-d3-layer/blob/master/dist/scripts/le
 		  //Path feature
 		  else{
 		    var path = entity.select("path");
-			for (var key in style) { //First check for generic layer style
+		    var defstyles = self.styledefaults; 
+			_(defstyles).each(function(val, key) { //First check for generic layer style
 				path.style(key,function(d){
-					if (d.style && d.style[key]){
-				        return d.style[key]; //Override with features style if present
+					if (d.properties[key]){
+				        return d.properties[key]; //Override with features style if present
 					}
  					else{ //Style can be defined by function...
- 					    if (typeof(style[key]) == "function") {
-                            var f = style[key];
+ 					    if (typeof(defstyles[key]) == "function") {
+                            var f = defstyles[key];
                             return  f(d);
                         }
                         else {//..or by generic style string
-                            return style[key]; 
+                            return defstyles[key]; 
                         }
                     }
 				});
-			}
-			//Now apply remaining styles of feature (possible doing a bit double work from previous loop)
-			if (d.style) { //If feature has style information
-				for (var key in d.style){ //run through the styles
-				    if (d.style[key] != null){
-				        path.style(key,d.style[key]); //and apply them
-				    }
-				}
-			}
+			});
 		  }
 		};
 		//A per feature styling method
-		var textstyling = function(d){ 
-			for (var key in labelconfig.style) { //First check for generic layer style
-				d3.select(this).style(key,function(d){
+		var textstyling = function(d){
+		    var obj = this;
+			_(labelconfig.style).each(function(val, key) { //First check for generic layer style
+				d3.select(obj).style(key,function(d){
 					if (d.labelconfig && d.labelconfig.style && d.labelconfig.style[key]){
 						return d.labelconfig.style[key]; //Override with features style if present
 					}
@@ -220,12 +226,12 @@ Based on: https://github.com/rclark/leaflet-d3-layer/blob/master/dist/scripts/le
 						return labelconfig.style[key]; //Apply generic style
 					}
 				});
-			}
+			});
 			//Now apply remaining styles of feature (possible doing a bit double work from previous loop)
 			if (d.labelconfig && d.labelconfig.style) { //If feature has style information
-				for (var key in d.labelconfig.style){ //run through the styles
-					d3.select(this).style(key,d.labelconfig.style[key]); //and apply them
-				}
+				_(d.labelconfig.style).each(function(val, key){ //run through the styles
+					d3.select(obj).style(key,d.labelconfig.style[key]); //and apply them
+				});
 			}
 		};
 		//Some path specific styles (point radius, label placement eg.)
@@ -267,7 +273,8 @@ Based on: https://github.com/rclark/leaflet-d3-layer/blob/master/dist/scripts/le
 		if (this.data.type === "Topology") {
 		    this.data = root.topojson.feature(this.geojson, this.geojson.objects.features);
 		}
-		var entities = g.selectAll(".entity")
+		//var entities = g.selectAll(".entity")
+		var entities = d3.select('#'+this.options.layerId).selectAll(".entity")
             .data(this.geojson.features, function(d) {
                 return d.id;
             });
@@ -312,19 +319,17 @@ Based on: https://github.com/rclark/leaflet-d3-layer/blob/master/dist/scripts/le
 			    var x = path.centroid(d)[0];
                 var y = path.centroid(d)[1];
                 
-                if (d.style && d.style.icon && d.geometry.type == 'Point'){
+                if (d.properties['marker-url'] && d.geometry.type == 'Point'){
                     entity.select('image')
                         .transition().duration(500)
-                        .attr("x",x-25)
+                        .attr("x",x-12.5)
                         .attr("y",y-25);
                 }
                 else{
                     entity.select('path') //Only 1 path per entity
                         .transition().duration(500)
-                        .attr("d",pathStyler(d))
+                        .attr("d",pathStyler(d));
                         //.style('opacity',0)
-                        
-                        ;
                 }
 			    
 			    if (labels){
@@ -351,9 +356,9 @@ Based on: https://github.com/rclark/leaflet-d3-layer/blob/master/dist/scripts/le
                 var x = self.path.centroid(d)[0];
                 var y = self.path.centroid(d)[1];
     
-                if (d.style && d.style.icon && d.geometry.type == 'Point'){
+                if (d.properties['marker-url'] && d.geometry.type == 'Point'){
                     entity.select('image')
-                        .attr("x",x-25)
+                        .attr("x",x-12)
                         .attr("y",y-25);
                         //.moveToFront();
                 }
@@ -390,25 +395,29 @@ Based on: https://github.com/rclark/leaflet-d3-layer/blob/master/dist/scripts/le
                     });
           });
       };
-      map.on("viewreset", function(){
-          if (self.geojson.features.length > 0){
+      //map.on("viewreset", function(){
+	  //TT: hack to get global map
+	  leafletmap.on("viewreset", function(){
+          if (self.geojson.features && self.geojson.features.length > 0){
               reset(self);
           }
       });
       //var feature = g.selectAll('path');
       //return feature.attr("d", path);
       
-      return this.resetFunction = reset;
+      this.resetFunction = reset;
+      return reset;
     },
     
     updateData: function(map) {
       var self = this;
       this._map = map;
       
-      if (this.geojson.features.length > 0){
+      if (this.geojson && this.geojson.features.length > 0){
           return this.reload();
       }
-      return this.resetFunction = this.reload;
+      this.resetFunction = this.reload;
+      return this.reserFunction;
     },
     onAdd: function(map) {
       /* Initialize the SVG layer */
@@ -420,30 +429,25 @@ Based on: https://github.com/rclark/leaflet-d3-layer/blob/master/dist/scripts/le
       //this._svg = svg = d3.select('#map').select('svg');
       this._g = g = svg.append('g');
       g.attr('id',this.options.layerId);
-      
+      this.styledefaults = {
+            "marker-url": './images/mapicons/mapicons/emergencyphone.png', //TODO TT: not nice
+            "marker-size" : "medium",
+            "marker-symbol" : "bus",//TODO   
+            "marker-color" : "#fff",
+            "stroke" : "#555555",
+            "stroke-opacity" : 1.0,
+            "stroke-width" : 2,  
+            "fill" : "none",
+            "fill-opacity" : 0.5,
+            "opacity" : 0.5
+      };
+      _.extend(this.styledefaults, this.options.style);
       return this.updateData(map);
     },
     onRemove: function(map) {
       this._svg.remove();
       return map.off("viewreset", this.resetFunction);
-    },
-    /* OBS?
-	changeFeature: function(self, feature){
-	    var desc = document.getElementById('descfld').value; //FIXME FIXME FIXME!!
-        //feature.properties.name = document.getElementById('titlefld').value; //TODO. Yuck, yuck yuck....
-        feature.properties.desc = desc;
-        feature.properties.owner = self.core.user().data('name');
-        self._map.closePopup(); //we have to destroy since the next line triggers a reload of all features
-		//if (self.core.activeproject() == feature.properties.store){
-            var key = feature.properties.key;
-            var item = self.core.project().items(key)
-                .data('feature', feature)
-                .data('msg',desc)
-                .sync();
-        //}
-        //self.editLayer.clearLayers();
-	}
-	*/
+    }
     
   });
 }).call(this);
