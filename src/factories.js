@@ -1,4 +1,3 @@
-cow
 // De definities van de verschillende beelden inclusief hun onderdelen
 icm.factory('Beelden', ['$rootScope', function( $rootScope ) {
     return {
@@ -19,11 +18,12 @@ icm.factory('Beelden', ['$rootScope', function( $rootScope ) {
 var cow = new Cow.core({
       //wsUrl: '/Cow/signalr'
 	  //wsUrl: '/Cow2/hhnk/signalr'   //# hhnk
-	  wsUrl: '/Cow2/unigis/signalr'   //# UniGIS
 	  //wsUrl: '/Cow2/geofort/signalr' //# geofort
       //wsUrl: 'wss://websocket.geodan.nl/icms'
+	  
+	  wsUrl: '/Cow2/unigis/signalr'   //# UniGIS
     });   
-    cow.userStore().loaded.then(function(){
+cow.userStore().loaded.then(function(){
     //if (!cow.users('1')){
     //    cow.users({_id:'1'}).data('name','Anonymous').sync();
     //}
@@ -195,3 +195,123 @@ icm.directive('contenteditable', function() {
     }
   };
 });
+
+
+
+
+icm.directive('myCurrentLocation', ['$interval', '$rootScope', function($interval, $rootScope) {
+
+    function link(scope, element, attrs) {
+      var timeoutId;
+	  
+	  function getCurrentDate() {
+	    var currentdate = new Date(); 
+	    var datetime = currentdate.getDate() + "/"
+			+ (currentdate.getMonth()+1) + "/" 
+			+ currentdate.getFullYear() + " @ "  
+			+ currentdate.getHours() + ":"  
+			+ currentdate.getMinutes() + ":" 
+			+ currentdate.getSeconds();
+		return datetime;
+	  }
+	  
+      function updateLocation() {
+        // element.text("Lat:"+showlatitude()+", Lon:"+showlongitude()+", Acc:"+showaccuracy());
+		var feature = { "id": cow.peerid(),
+                        "type": "Feature",
+                        "geometry": {
+                            "type": "Point",
+                            "coordinates": [mylongitude(), mylatitude()]
+                        },
+						"properties": {
+							"uid":cow.peerid(),
+							"owner": cow.user().data('name'),
+							"label":""
+						}
+					  };
+		cow.peer().data('location', feature).sync();
+
+		console.log ("Lat:"+mylatitude()+", Lon:"+mylongitude()+", Acc:"+myaccuracy());
+		console.log('loc updated at '+getCurrentDate());
+      }
+	  function mylatitude() {
+	    return $rootScope.position.coords.latitude;
+	  }
+	  function mylongitude() {
+		if (typeof($rootScope.position.coords.longitude) != "undefined") {
+		  return $rootScope.position.coords.longitude;
+		}
+		 else {
+		  return 0;
+		}
+	  }
+	  function myaccuracy() {
+		if (typeof($rootScope.position.coords.accuracy) != "undefined") {
+		  return $rootScope.position.coords.accuracy;
+		}
+		 else {
+		  return 0;
+		}
+	  }
+      scope.$watch(attrs.myCurrentLocation, function(value) {
+        position = value;
+        updateLocation();
+      });
+
+      element.on('$destroy', function() {
+        $interval.cancel(timeoutId);
+      });
+
+      // start the UI update process; save the timeoutId for canceling
+      timeoutId = $interval(function() {
+		// $rootScope.getMyPosition();
+		if (navigator.geolocation) {
+			navigator.geolocation.getCurrentPosition(function(position){
+				$rootScope.$apply(function(){
+					$rootScope.position = position;
+				});
+			});
+		}
+        updateLocation(); // update DOM
+      }, 10000);
+    }
+
+    return {
+      link: link
+    };
+}]);
+
+
+
+
+icm.directive('myCurrentTime', ['$interval', 'dateFilter', function($interval, dateFilter) {
+
+    function link(scope, element, attrs) {
+      var format,
+          timeoutId;
+
+      function updateTime() {
+        element.text(dateFilter(new Date(), format));
+      }
+
+      scope.$watch(attrs.myCurrentTime, function(value) {
+        format = value;
+        updateTime();
+      });
+
+      element.on('$destroy', function() {
+        $interval.cancel(timeoutId);
+      });
+
+      // start the UI update process; save the timeoutId for canceling
+      timeoutId = $interval(function() {
+        updateTime(); // update DOM
+      }, 1000);
+    }
+
+    return {
+      link: link
+    };
+}]);
+
+

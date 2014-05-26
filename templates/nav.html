@@ -16,6 +16,19 @@
     </ul>
     <ul class="nav navbar-nav navbar-right">
       <li>
+        <!-- <p class=" navbar-text">POS: <span my-current-location="position"></span> </p> -->
+        <!-- <p class=" navbar-text">POS: <span my-current-location="position">lat:{{position.coords.latitude}}, lon:{{position.coords.longitude}}</span> </p> -->
+        <p class=" navbar-text"><span my-current-location="position"></span> </p>
+      </li>
+      <li>
+        <p class=" navbar-text">Date: <span my-current-time="dateformat"></span> </p>
+      </li>
+      <li>
+        <p class=" navbar-text">Time: <span my-current-time="timeformat"></span> </p>
+      </li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+      <li>
         <p ng-if="data.incident!=''" class=" navbar-text">Incident: {{data.incident}}</p>
       </li>
     </ul>

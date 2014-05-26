@@ -174,8 +174,8 @@ icm.controller('LeafletController', [ '$scope','$http','$timeout','Core', 'Utils
                     var created = new Date(item.created()).toLocaleString();
                     var updated = new Date(item.timestamp()).toLocaleString();
                     desc = desc.replace(/\r\n?|\n/g, '<br />');
-                    desc = desc + '<h4>Populatie:</h4><br>' + text;
-                    name = '(Populatie) ' + name;
+                    desc = desc + '<h4>Population:</h4><br>' + text;
+                    name = '(Population) ' + name;
                     var sheader = fe.append('div')
                         .classed('panel-heading', true)
                         //.attr('contenteditable','true')
@@ -205,10 +205,10 @@ icm.controller('LeafletController', [ '$scope','$http','$timeout','Core', 'Utils
                             this.contentEditable=false;
                         })
                         .html(desc);
-                    var html = '<small>Gemaakt door: ' + creator + ' op ' +  created + '<br> Bewerkt door: ' + owner + ' op ' + updated + '</small>'; 
+                    var html = '<small>Created by: ' + creator + ' at ' +  created + '<br> Edited by: ' + owner + ' at ' + updated + '</small>'; 
                     scontent.append('div').html(html);
                     scontent.append('span')
-                        .html('Opslaan')
+                        .html('Save')
                         .classed('btn btn-success', true)
                         .on('click',function(z){
                             feat.properties.name = sheader.html();
@@ -217,7 +217,7 @@ icm.controller('LeafletController', [ '$scope','$http','$timeout','Core', 'Utils
                             fe.remove();
                     });
                     scontent.append('span')
-                        .html('Annuleren')
+                        .html('Cancel')
                         .classed('btn btn-danger pull-right', true)
                         .on('click',function(z){
                             fe.remove();
@@ -306,10 +306,10 @@ icm.controller('LeafletController', [ '$scope','$http','$timeout','Core', 'Utils
                     })
                     .html(desc);
                     
-                var html = '<small>Gemaakt door: ' + creator + ' op ' +  created + '<br> Bewerkt door: ' + owner + ' op ' + updated + '</small>'; 
+                var html = '<small>Created by: ' + creator + ' at ' +  created + '<br> Edited by: ' + owner + ' at ' + updated + '</small>'; 
                 scontent.append('div').html(html);
                 scontent.append('span')
-                    .html('Opslaan')
+                    .html('Save')
                     .classed('btn btn-success', true)
                     .on('click',function(z){
                         feat.properties.name = sheader.html();
@@ -318,7 +318,7 @@ icm.controller('LeafletController', [ '$scope','$http','$timeout','Core', 'Utils
                         fe.remove();
                     });
                 scontent.append('span')
-                    .html('Annuleren')
+                    .html('Cancel')
                     .classed('btn btn-danger pull-right', true)
                     .on('click',function(z){
                         fe.remove();
@@ -538,7 +538,8 @@ icm.controller('LeafletController', [ '$scope','$http','$timeout','Core', 'Utils
             if (peer.data('extent') && peer.id() != core.peerid()){
                 extentCollection.features.push(peer.data('extent'));
             }
-            if (peer.data('location') && peer.id() != core.peerid()){
+            // if (peer.data('location') && peer.id() != core.peerid()){
+            if (peer.data('location')) {
                 //Own location is handled somewhere else
                 locationCollection.features.push(peer.data('location'));
             }
@@ -623,9 +624,10 @@ icm.controller('LeafletController', [ '$scope','$http','$timeout','Core', 'Utils
         /** ADD LAYERS **/
         map.addLayer(extentLayer);
         map.addLayer(featureLayer);
+        map.addLayer(locationLayer);
 
         /** Add geofort layers **/
-        //addGeofortLayers(LeafletService,map); //FIXME
+        // addGeofortLayers(LeafletService,map); //FIXME
         
         /** SETUP DRAWING FUNCTIONALITY **/
         // Use a geoJson object for the drawnItems instead of featureGroup

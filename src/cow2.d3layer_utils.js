@@ -7,22 +7,22 @@ Cow_utils.menuconfig = {
      "children": [{
        "name": "model.populator",
           icon: './css/img/users_icon.png',
-          label: "Populatie",
+          label: "Population",
           size: 1
       },{
           "name": "edit.geom",        
           icon: './css/img/pencil_icon.png',
-          label: 'Bewerken',
+          label: 'Edit',
           value: 1
      },{
           "name": "delete",
           icon: './css/img/clipboard_cut_icon.png',
-          label: 'Verwijderen',
+          label: 'Delete',
           value: 1
      },{
           "name": "edit.text",
           icon: './css/img/text_letter_t_icon.png',
-          label: "Tekst",
+          label: "Text",
           size: 1
      }//,{
      //     "name": "share",
@@ -228,7 +228,7 @@ Cow_utils.textbox = function(feature,obj){
         .classed("textbox popup share ui-draggable", true);
     var sheader = div.append('div')
         .classed('sheader', true)
-        .attr('title','Dit object is gemaakt door');
+        .attr('title','This object was created by');
     sheader.append('span')
         .classed('group ' + groupnames,true); //TODO add own groups here
     sheader.append('span').html(groupnames  + " <small>(" + ownername + ")</small>");
