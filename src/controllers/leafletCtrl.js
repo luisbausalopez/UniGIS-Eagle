@@ -113,7 +113,8 @@ icm.controller('LeafletController', [ '$scope','$http','$timeout','Core', 'Utils
         }
     });
     //LeafletService.layers.icmlayers.locationLayer = locationLayer;
-    
+	
+   
     var editmenu = function(feat,container, element, event){
         if ($scope.chronos){
             return null;
@@ -124,7 +125,7 @@ icm.controller('LeafletController', [ '$scope','$http','$timeout','Core', 'Utils
             });
             /* Menu listeners */
             menu.on('delete', function(d){
-                if (confirm('Verwijderen?')) {
+                if (confirm('Delete?')) {
                     var key = d.fid;
                     Core.project().items(key).deleted('true').sync();
                 } else {
@@ -326,6 +327,7 @@ icm.controller('LeafletController', [ '$scope','$http','$timeout','Core', 'Utils
             });
         }
     };
+
     var textbox = function(feat,container, element, event){
         var self = this;
         var fid = feat.id;
@@ -388,6 +390,7 @@ icm.controller('LeafletController', [ '$scope','$http','$timeout','Core', 'Utils
     $scope.linestyles = LeafletService.linestyles;
     $scope.polygonstyles = LeafletService.polygonstyles;
     $scope.currentstyle = LeafletService.currentstyle;
+	
     
     //Identify ESRI features
     var identify = function(event){
@@ -473,6 +476,7 @@ icm.controller('LeafletController', [ '$scope','$http','$timeout','Core', 'Utils
             val.buttonclass = true;
         }
     };
+    
     
     /** END OF SECTION EXTRA LAYERS **/
     
@@ -599,6 +603,7 @@ icm.controller('LeafletController', [ '$scope','$http','$timeout','Core', 'Utils
         */
     };
 
+ 
 
     
     /** 
@@ -625,6 +630,10 @@ icm.controller('LeafletController', [ '$scope','$http','$timeout','Core', 'Utils
         map.addLayer(extentLayer);
         map.addLayer(featureLayer);
         map.addLayer(locationLayer);
+		
+        /** Add Cameras layer **/
+		// map.addLayer(cameraLayer);
+		addCameraLayers(LeafletService,map);
 
         /** Add geofort layers **/
         // addGeofortLayers(LeafletService,map); //FIXME

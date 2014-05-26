@@ -112,21 +112,154 @@ var icmconfig = {
    },
   "definedlayers":{
       osm: {
-                name: "OpenStreetMap",
-                url: 'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
-                type: 'xyz'
+			name: "OpenStreetMap",
+			url: 'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+			type: 'xyz'
             },
      osm_grey: {
-          name: 'OSM grey',
-          url: 'http://a.www.toolserver.org/tiles/bw-mapnik/{z}/{x}/{y}.png',
-          type: 'xyz'
-      }
+			name: 'OSM grey',
+			url: 'http://a.www.toolserver.org/tiles/bw-mapnik/{z}/{x}/{y}.png',
+			type: 'xyz'
+			}
   },
   "layers":
   {
-      "ahn1": {"type": "overlay", "category": "Terrain", "layer": {"type":"betterwms","visible":true,"name":"Height map","url":"http://t3.edugis.nl/tiles/tilecache.py?map=maps/edugis/cache/hoogte.map","layerOptions":{"layers":"hoogtes","format":"image/png","transparent":true,"opacity":0.8}}}
+      "ahn1": {"type": "overlay", "category": "Terrain", "layer": {"type":"betterwms","visible":true,"name":"Height map","url":"http://t3.edugis.nl/tiles/tilecache.py?map=maps/edugis/cache/hoogte.map","layerOptions":{"layers":"hoogtes","format":"image/png","transparent":true,"opacity":0.8}}}//,
+
+	  // "brp":  {"type": "overlay", "category": "External", "layer": {"type": "betterwms","visible": true, "name": "Crop parcels","url": "http://research.geodan.nl/service/ngr/brpgewaspercelen/wms","layerOptions": {"layers": "brpgewaspercelen","format": "image/png","transparent": true}}},
+
+	  // zwemwater:{type: 'overlay', category: 'External', layer: {type: 'betterwms',visible: true, name: "Bathing locations",url: 'http://www.zwemwater.nl/zwr-ogc/services/zwr-wms',layerOptions: {layers: 'zwemwaterlocatie',format: 'image/png',transparent: true}}},
+
+	  // zw_gebied:{type: 'overlay', category: 'External', layer: {type: 'betterwms',visible: true, name: "Bathing Areas",url: 'http://www.zwemwater.nl/zwr-ogc/services/zwr-wms',layerOptions: {layers: 'gebied',format: 'image/png',transparent: true}}},
+
+	  // golffront: {type: 'overlay', category: '3Di', layer:{ 
+				// name: "Wave front",
+				// type:  'betterwms',
+				// url: "http://result.3di.lizard.net/3di/wms",
+				// visible: true,
+				// layerOptions: {
+					// layers: '61f5a464c35044c19bc7d4b42d7f58cb:arrival',
+					// format: 'image/png',
+					// transparent: true
+				// }
+			// }
+		// },
+
+		// waterdepth: {type: 'overlay', category: '3Di', layer:{ 
+				// name: "Water depth",
+				// type:  'betterwms',
+				// url: "http://result.3di.lizard.net/3di/wms",
+				// visible: true,
+				// layerOptions: {
+					// layers: '61f5a464c35044c19bc7d4b42d7f58cb:maxdepth',
+					// format: 'image/png',
+					// transparent: true
+				// }
+			// }
+		// }
   }
 };
+
+
+var addCameraLayers = function(LeafletService,map){
+
+     var cameraMarkerOptions = {
+         radius: 4,
+         fillColor: "#ff7800",
+         color: "#000",
+         weight: 1,
+         opacity: 1,
+         fillOpacity: 0.8
+     };
+
+	var cambox = function(feat, container, element, event){
+        var self = this;
+        var fid = feat.id;
+        var feature = feat;
+        var g, svg;
+        var loc = d3.mouse(element); //Wrong on firefox
+        var center = {x: event.layerX, y: event.layerY};
+        var fe = d3         
+            .select('.leaflet-popup-pane')
+            .selectAll('.cambox').data([feat]);
+        var textbox  = fe.enter()
+            .append('div')
+            .style('position','absolute')
+            .classed('cambox',true)
+            .classed('panel panel-primary',true)
+            .style('max-width','300px')
+			.on('click',function(){d3.selectAll('.cambox').remove();});
+        textbox.append('div')
+            .classed('panel-heading',true)
+			.append('h4')
+            .classed('panel-title',true)
+			.html(feat.properties.camid);
+        textbox.append('div')
+            .classed('panel-body',true)
+            .html("Cam ID: " + feat.properties.camid + 
+				"<br>Region: " + feat.properties.region +
+				"<br>Area: " + feat.properties.area +
+				"<br>Brand: " + feat.properties.brand +
+				"<br>Type: " + feat.properties.type +
+				"<br>Azimuth: " + feat.properties.azimuth +
+				"<br>Latitude: " + feat.geometry.coordinates[1] +
+				"<br>Longitude: " + feat.geometry.coordinates[0]);
+       fe.style('left', function(){return loc[0] + 10 + 'px';})
+            .style('top', function(){return loc[1] + 10 + 'px';})
+            .style("width", '250px');
+    };
+	
+    /* Cameras layer */
+    var cameraCollection = {"type":"FeatureCollection","features":[]};
+	var cameraLayer = new L.geoJson(cameraCollection, {
+        pointToLayer: function(feature, latlng){
+            return L.circleMarker(latlng, cameraMarkerOptions);
+        },
+        style: function (feature) {
+            return {color: 'red',weight: 1};
+        },
+        onEachFeature: function (feature, layer) {
+            layer.bindLabel(feature.properties.camid,{ noHide: false });
+            layer.bindPopup("Cam ID: " + feature.properties.camid + 
+				"<br>Region: " + feature.properties.region +
+				"<br>Area: " + feature.properties.area +
+				"<br>Brand: " + feature.properties.brand +
+				"<br>Type: " + feature.properties.type +
+				"<br>Azimuth: " + feature.properties.azimuth +
+				"<br>Latitude: " + feature.geometry.coordinates[1] +
+				"<br>Longitude: " + feature.geometry.coordinates[0]);
+        }
+    });
+    cameraLayer.name = 'Cameras';
+    cameraLayer.buttonclass = false;
+    LeafletService.layers.icmlayers.cameraLayer = cameraLayer;
+	d3.json('./data/cameras.json', function(data){
+		for (var i= 0; i< data.length;i++){
+			var d = data[i];
+			feature = {
+				id: d.CameraId,
+				type: 'Feature', 
+				geometry: {
+					coordinates: [d.Lat,d.Lon],
+					type: 'Point'
+				},
+				properties: {
+					camid: d.CameraId,
+					region: d.Region,
+					area: d.Area,
+					type: d.Type,
+					azimuth: d.Azimuth,
+					brand: d.Brand
+				}
+			}
+			cameraCollection.features.push(feature);
+		}
+		cameraLayer.addData(cameraCollection);
+	});
+};
+
+
+
 
 
 var addGeofortLayers = function(LeafletService,map){
@@ -135,16 +268,16 @@ var addGeofortLayers = function(LeafletService,map){
      var floodlayer = new L.geoJson(data, {
          style: function (feature) {
              var style = {};
-             if (feature.properties.tijdstip == 'na 4 uur'){
+             if (feature.properties.tijdstip == 'after 4 hours'){
                  style.opacity  = 0.2;
              }
-             else if (feature.properties.tijdstip == 'na 8 uur'){
+             else if (feature.properties.tijdstip == 'after 8 hours'){
                  style.opacity  = 0.4;
              }
-             else if (feature.properties.tijdstip == 'na 12 uur'){
+             else if (feature.properties.tijdstip == 'after 12 hours'){
                  style.opacity  = 0.6;
              }
-             else if (feature.properties.tijdstip == 'na 16 uur'){
+             else if (feature.properties.tijdstip == 'after 16 hours'){
                  style.opacity  = 0.8;
              }
              //style.fillOpacity = 0;
@@ -155,7 +288,7 @@ var addGeofortLayers = function(LeafletService,map){
              layer.bindPopup(feature.properties.tijdstip);
          }
      }).addTo(map);
-     floodlayer.name = 'Model uitvoer';
+     floodlayer.name = 'Model Output';
      floodlayer.buttonclass = true;
      LeafletService.layers.icmlayers.floodlayer = floodlayer;
      //self.layercontrol.addOverlay(floodlayer,"Inundatie");
