@@ -420,6 +420,57 @@ var icmconfig = {
 			}
 		}
 		
+		, "standplaats": {
+			"type": "overlay", 
+			"category": "BAG", 
+			"layer": {
+				"type":"betterwms",
+				"visible":true,
+				"name":"standplaats",
+				"url":"/ngr/bag/wms",
+				"layerOptions": {
+					"layers":"standplaats",
+					"format":"image/png",
+					"transparent":true,
+					"opacity":0.8
+				}
+			}
+		}
+		
+		, "verblijfsobject": {
+			"type": "overlay", 
+			"category": "BAG", 
+			"layer": {
+				"type":"betterwms",
+				"visible":true,
+				"name":"verblijfsobject",
+				"url":"/ngr/bag/wms",
+				"layerOptions": {
+					"layers":"verblijfsobject",
+					"format":"image/png",
+					"transparent":true,
+					"opacity":0.8
+				}
+			}
+		}
+		
+		, "woonplaats": {
+			"type": "overlay", 
+			"category": "BAG", 
+			"layer": {
+				"type":"betterwms",
+				"visible":true,
+				"name":"woonplaats",
+				"url":"/ngr/bag/wms",
+				"layerOptions": {
+					"layers":"woonplaats",
+					"format":"image/png",
+					"transparent":true,
+					"opacity":0.8
+				}
+			}
+		}
+		
 		, "ahn2_05m_int": {
 			"type": "overlay", 
 			"category": "AHN2", 
@@ -477,10 +528,197 @@ var icmconfig = {
 			"layer": {
 				"type":"betterwms",
 				"visible":true,
-				"name":"Height map 5m (with buildings)",
+				"name":"Height map 5m",
 				"url":"/ngr/ahn2/wms",
 				"layerOptions": {
-					"layers":"ahn2_05m_ruw",
+					"layers":"ahn2_5m",
+					"format":"image/png",
+					"transparent":true,
+					"opacity":0.8
+				}
+			}
+		}
+		
+		, "ahn2_bladindex": {
+			"type": "overlay", 
+			"category": "AHN2", 
+			"layer": {
+				"type":"betterwms",
+				"visible":true,
+				"name":"ahn2_bladindex",
+				"url":"/ngr/ahn2/wms",
+				"layerOptions": {
+					"layers":"ahn2_bladindex",
+					"format":"image/png",
+					"transparent":true,
+					"opacity":0.8
+				}
+			}
+		}
+		
+		, "wegdeelvlakken": {
+			"type": "overlay", 
+			"category": "TOP10NL", 
+			"layer": {
+				"type":"betterwms",
+				"visible":true,
+				"name":"wegdeelvlakken",
+				"url":"/ngr/top10nl/wms",
+				"layerOptions": {
+					"layers":"wegdeelvlakken",
+					"format":"image/png",
+					"transparent":true,
+					"opacity":0.8
+				}
+			}
+		}
+		
+		, "waterdeellijnen": {
+			"type": "overlay", 
+			"category": "TOP10NL", 
+			"layer": {
+				"type":"betterwms",
+				"visible":true,
+				"name":"waterdeellijnen",
+				"url":"/ngr/top10nl/wms",
+				"layerOptions": {
+					"layers":"waterdeellijnen",
+					"format":"image/png",
+					"transparent":true,
+					"opacity":0.8
+				}
+			}
+		}
+		
+		, "waterdeel_vlakken": {
+			"type": "overlay", 
+			"category": "TOP10NL", 
+			"layer": {
+				"type":"betterwms",
+				"visible":true,
+				"name":"waterdeel_vlakken",
+				"url":"/ngr/top10nl/wms",
+				"layerOptions": {
+					"layers":"waterdeel_vlakken",
+					"format":"image/png",
+					"transparent":true,
+					"opacity":0.8
+				}
+			}
+		}
+		
+		, "terreinen": {
+			"type": "overlay", 
+			"category": "TOP10NL", 
+			"layer": {
+				"type":"betterwms",
+				"visible":true,
+				"name":"terreinen",
+				"url":"/ngr/top10nl/wms",
+				"layerOptions": {
+					"layers":"terreinen",
+					"format":"image/png",
+					"transparent":true,
+					"opacity":0.8
+				}
+			}
+		}
+		
+		, "spoorbaandeel_lijnen": {
+			"type": "overlay", 
+			"category": "TOP10NL", 
+			"layer": {
+				"type":"betterwms",
+				"visible":true,
+				"name":"spoorbaandeel_lijnen",
+				"url":"/ngr/top10nl/wms",
+				"layerOptions": {
+					"layers":"spoorbaandeel_lijnen",
+					"format":"image/png",
+					"transparent":true,
+					"opacity":0.8
+				}
+			}
+		}
+		
+		, "inrichtingselementlijnen": {
+			"type": "overlay", 
+			"category": "TOP10NL", 
+			"layer": {
+				"type":"betterwms",
+				"visible":true,
+				"name":"inrichtingselementlijnen",
+				"url":"/ngr/top10nl/wms",
+				"layerOptions": {
+					"layers":"inrichtingselementlijnen",
+					"format":"image/png",
+					"transparent":true,
+					"opacity":0.8
+				}
+			}
+		}
+		
+		, "inrichtingselement_punten": {
+			"type": "overlay", 
+			"category": "TOP10NL", 
+			"layer": {
+				"type":"betterwms",
+				"visible":true,
+				"name":"inrichtingselement_punten",
+				"url":"/ngr/ahn2/wms",
+				"layerOptions": {
+					"layers":"inrichtingselement_punten",
+					"format":"image/png",
+					"transparent":true,
+					"opacity":0.8
+				}
+			}
+		}
+		
+		, "geo_labels": {
+			"type": "overlay", 
+			"category": "TOP10NL", 
+			"layer": {
+				"type":"betterwms",
+				"visible":true,
+				"name":"geo_labels",
+				"url":"/ngr/top10nl/wms",
+				"layerOptions": {
+					"layers":"geo_labels",
+					"format":"image/png",
+					"transparent":true,
+					"opacity":0.8
+				}
+			}
+		}
+		
+		, "gebouwen": {
+			"type": "overlay", 
+			"category": "TOP10NL", 
+			"layer": {
+				"type":"betterwms",
+				"visible":true,
+				"name":"gebouwen",
+				"url":"/ngr/top10nl/wms",
+				"layerOptions": {
+					"layers":"gebouwen",
+					"format":"image/png",
+					"transparent":true,
+					"opacity":0.8
+				}
+			}
+		}
+		
+		, "functioneelgebied_labels": {
+			"type": "overlay", 
+			"category": "TOP10NL", 
+			"layer": {
+				"type":"betterwms",
+				"visible":true,
+				"name":"functioneelgebied_labels",
+				"url":"/ngr/top10nl/wms",
+				"layerOptions": {
+					"layers":"functioneelgebied_labels",
 					"format":"image/png",
 					"transparent":true,
 					"opacity":0.8
