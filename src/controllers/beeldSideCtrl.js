@@ -12,7 +12,9 @@ icm.controller('BeeldSideCtrl', ['$scope', '$stateParams', 'Beelden', 'Core', 'U
         //TODO: hier moet je of terug gestuurd worden naar incidenten of netjes met een promise oid alsnog alle gegevens zetten
         if(!Core.project($stateParams.incidentID)) return false;
         
-    } 
+    }
+	// $scope.beelden = icmconfig.templates[Core.project().data("template").id].beelden;
+	
     $scope.nieuwBericht = 0;
     $scope.$watch('data.users',function(users){
         var updated = 0;

@@ -5,8 +5,9 @@ icm.controller('IncidentenCtrl' ,['$scope', 'Core', 'Utils', 'Beelden', '$state'
     $scope.data= Utils;    
     $scope.data.project = Core.project(); //Get current project
     var store = Core.projectStore(); //Get projectstore
-
-    $scope.firstBeeld = icmconfig.beelden[0].beeld; //set first beeld as default beeld
+	
+	$scope.firstBeeld = icmconfig.beelden[0].beeld; //set first beeld as default beeld
+    // $scope.firstBeeld = icmconfig.beelden[0].beeld; //set first beeld as default beeld
 
     $scope.data.projectlist = Core.projects();
     //Bind storechange to angular DOM
@@ -54,13 +55,17 @@ icm.controller('IncidentenCtrl' ,['$scope', 'Core', 'Utils', 'Beelden', '$state'
 
     //Set the current project
     $scope.setProject = function(project) {
-        //Unbind the listener to the old itemStore, otherwhise we mess up stores
+        //Unbind the listener to the old itemStore, otherwise we mess up stores
         if ($scope.data.project){
             $scope.data.project.itemStore().unbind('datachange');
         }
         Core.project(project.id()); 
         $scope.data.incident = project.data('name');
         $scope.data.project = project;
+        // $scope.template = project.data('template');
+		// $scope.firstbeelden = $scope.template.beelden[0];
+		// $scope.firstBeeld = $scope.firstbeelden.beeld; //set first beeld as default beeld
+		// Beelden.populate();
         var itemstore = project.itemStore();
         $scope.data.itemlist = project.items();        
         itemstore.bind('datachange', function () {
@@ -75,6 +80,7 @@ icm.controller('IncidentenCtrl' ,['$scope', 'Core', 'Utils', 'Beelden', '$state'
         itemstore.sync();
         project.groupStore().sync(); //we're not using groupstore but just being consistent
         
+         // Beelden.reset(project.data('template'), new Date().getTime());
          Beelden.reset(new Date().getTime());
         // Beelden.reset(); 
          LeafletService.reset();

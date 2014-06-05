@@ -32,6 +32,24 @@ icm.controller('IncidentCtrl' ,['$scope', 'Core', '$stateParams', '$location', '
             { id: 1, name: "Planned" },
             { id: 2, name: "Closed" }
         ];
+    // $scope.projectLayouts =
+        // [
+            // { id: 0, name: "HHNK" }
+            // ,{ id: 1, name: "ICM" }
+            // ,{ id: 2, name: "GeoFort" }
+            // ,{ id: 3, name: "UniGIS NCW" }
+            // ,{ id: 4, name: "UniGIS DS" }
+            // ,{ id: 5, name: "UniGIS GS" }
+            // ,{ id: 6, name: "UniGIS CO" }
+            // ,{ id: 7, name: "UniGIS PLN" }
+            // ,{ id: 8, name: "Teams NCW" }
+            // ,{ id: 9, name: "Teams Firemen" }
+            // ,{ id: 10, name: "Teams Ambulances" }
+            // ,{ id: 11, name: "Teams Police" }
+            // ,{ id: 12, name: "Teams Infrastructure" }
+        // ];
+	// $scope.projectLayouts = [];
+	$scope.projectLayouts = icmconfig.templates;
 
     /* Datepicker configuration */
     $scope.dateOptions = {
@@ -55,8 +73,9 @@ icm.controller('IncidentCtrl' ,['$scope', 'Core', '$stateParams', '$location', '
     if (project === null)
     {
         $scope.id = null;
-        $scope.incident.date = new Date();
         $scope.incident.name = '';
+        $scope.incident.date = new Date();
+		// $scope.incident.template = $scope.projectLayouts[3];
         $scope.incident.status = $scope.projectStatuses[0];
         $scope.isPlanned = false;
         $scope.incident.type = $scope.projectTypes[1];
@@ -70,6 +89,7 @@ icm.controller('IncidentCtrl' ,['$scope', 'Core', '$stateParams', '$location', '
         $scope.id = project.id();
         $scope.incident.name = project.data('name');
         $scope.incident.date = project.data('date');
+		// $scope.incident.template = project.data('template') === undefined ? $scope.projectLayouts[3] : $scope.projectLayouts[project.data('template').id];
         $scope.incident.status = project.data('status') === undefined ? $scope.projectStatuses[0] : $scope.projectStatuses[project.data('status').id];
         $scope.incident.type = project.data('type') === undefined ? $scope.projectTypes[1] : $scope.projectTypes[project.data('type').id];
         $scope.isPlanned = $scope.incident.status.id === 1;
@@ -162,6 +182,7 @@ icm.controller('IncidentCtrl' ,['$scope', 'Core', '$stateParams', '$location', '
         coreProject.data('name',$scope.incident.name)
             .data('status',$scope.incident.status)
             .data('type',$scope.incident.type)
+            // .data('template',$scope.incident.template)
             .sync();
         $location.path(locationPath);
         return true;

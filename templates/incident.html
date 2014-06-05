@@ -13,6 +13,13 @@
                         <input type="text" ng-model="incident.name" class="form-control" placeholder="enter name" ng-disabled="!isEditable">
                         <p>Enter the name of the incident here</p>
                     </div>
+<!--                     <div class="list-group-item" >
+                        <h5 class="list-group-item-heading text-primary">Text Layout</h5>
+                        <select class="form-control" data-ng-model="incident.template" 
+                                data-ng-options="template.name for template in projectLayouts">
+                        </select>
+                        <p>Click here to select the layout of the incident</p>
+                    </div> -->
                     <div class="list-group-item" >
                         <a class="pull-right glyphicon" ng-click="setEditable()" ng-class="{'glyphicon-pencil': true}" ng-hide="isEditable"></a>
                         <h5 class="list-group-item-heading text-primary">Type</h5>

@@ -2,14 +2,23 @@
 icm.factory('Beelden', ['$rootScope', function( $rootScope ) {
     return {
       reset: function(time) {
+      // reset: function(template, time) {
         time = time?time:0;
         /* TT: config comes from ./config/xx.json */
-        this.beelden = icmconfig.beelden;
+		this.beelden = icmconfig.beelden;
+		// tpl = template.id;
+        // this.beelden = icmconfig.templates[tpl].beelden; //EDITED TO GET BEELDEN TEMPLATE FROM ARRAY
         _(this.beelden).each(function(d){
                 d.beeld.timestamp = time;
         });
         return this.beelden;
       },
+	  // populate: function() {
+		// template = project.data("template");
+		// beeldenTemplate = icmconfig.templates[template.id];
+		// beelden = beeldenTemplate.beelden;
+		// icmconfig.beelden = beelden;
+	  // },
       beelden: []
     };
 }]);
@@ -238,21 +247,12 @@ icm.directive('myCurrentLocation', ['$interval', '$rootScope', function($interva
 	    return $rootScope.position.coords.latitude;
 	  }
 	  function mylongitude() {
-		if (typeof($rootScope.position.coords.longitude) != "undefined") {
-		  return $rootScope.position.coords.longitude;
-		}
-		 else {
-		  return 0;
-		}
+		return $rootScope.position.coords.longitude;
 	  }
 	  function myaccuracy() {
-		if (typeof($rootScope.position.coords.accuracy) != "undefined") {
-		  return $rootScope.position.coords.accuracy;
-		}
-		 else {
-		  return 0;
-		}
+		$rootScope.position.coords.accuracy;
 	  }
+	  
       scope.$watch(attrs.myCurrentLocation, function(value) {
         position = value;
         updateLocation();
