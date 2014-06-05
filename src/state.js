@@ -13,7 +13,8 @@ var icm = angular.module('icm', ["ui.router",'ui.bootstrap',"leaflet-directive",
 		// Date and time
 		$rootScope.timeformat = "HH:mm:ss";
 		$rootScope.dateformat = "MMMM dd, yyyy";
-		// Position from HTML5 Geolocation
+
+		// User's Position obtained from HTML5 Geolocation
 		$rootScope.position = null;
 		
         $rootScope.$on('$stateChangeStart', function(e, to) {
