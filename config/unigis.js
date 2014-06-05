@@ -3,56 +3,300 @@ var icmconfig = {
   "center": {
         lat: 52.752087, //Approx HHNK
         lng: 4.896941,
-        zoom: 5
+        zoom: 8
   },
   "beelden":[
-	{ beeld: 'situation', title: 'Current situation', timestamp: 0, beeldonderdeel: 
-	  [ {id:'summary', title: 'Summary', isedit: false, zeker: true}
-	  ]}    
-	,{ beeld: 'report', title: 'Reports', timestamp: 0, beeldonderdeel: 
-	  [ {title:'Timeline',id:'timeline', isedit: false, zeker: true},
-		{title:'Notifications',id:'notifications' , isedit: false, zeker: true},
-		{title: 'Urgent', id:'urgent', isedit: false, zeker: true},
-		{title: 'Local situation',id: 'place', isedit: false, zeker: true} ,
-		{title: 'Actions/Measures',id:'measures' , isedit: false, zeker: true}
-	]}
-	,{ beeld: 'operation', title: 'Operational team', timestamp: 0, beeldonderdeel: 
-	  [ {title:'Timeline',id:'timeline', isedit: false, zeker: true},
-		{title:'Notifications',id:'notifications', isedit: false, zeker: true},
-		{title:'Remarks',id:'remarks', isedit: false, zeker: true},
-		{title:'Decisions',id:'decisions', isedit: false, zeker: true},
-		{title:'Bottlenecks',id:'bottlenecks', isedit: false, zeker: true},
-		{title:'Actions/Measures',id:'measures', isedit: false, zeker: true},
-		{title:'Safety staff',id:'safety', isedit: false, zeker: true},
-		{title:'Prognose (forecast)',id:'prognose', isedit: false, zeker: true}
-	]}
-	,{ beeld: 'tactic', title: 'Tactical Team', timestamp: 0, beeldonderdeel:
-	  [ {title:'Timeline',id:'timeline', isedit: false, zeker: true},
-		{title:'Notifications',id:'notifications', isedit: false, zeker: true},
-		{title:'Remarks',id:'remarks', isedit: false, zeker: true},
-		{title:'Decisions',id:'decisions', isedit: false, zeker: true},
-		{title:'Bottlenecks',id:'bottlenecks', isedit: false, zeker: true},
-		{title:'Actions/Measures',id:'measures', isedit: false, zeker: true},          
-		{title:'Prognose (forecast)',id:'prognose', isedit: false, zeker: true}
-	]}        
-	,{ beeld: 'strategic', title: 'Strategical team', timestamp: 0, beeldonderdeel: 
-	  [ {title:'Timeline',id:'timeline', isedit: false, zeker: true},
-		{title:'Notifications',id:'notifications', isedit: false, zeker: true},
-		{title:'Remarks',id:'remarks', isedit: false, zeker: true},
-		{title:'Decisions',id:'decisions', isedit: false, zeker: true},
-		{title:'Bottlenecks',id:'bottlenecks', isedit: false, zeker: true},
-		{title:'Actions/Measures',id:'measures', isedit: false, zeker: true},          
-		{title:'Prognose (forecast)',id:'prognose', isedit: false, zeker: true}
-	]}
-	,{ beeld: 'scenarios', title: 'Scenarios', timestamp: 0, beeldonderdeel: 
-	  [ {title:'High probability',id:'high', isedit: false, zeker: true},
-		{title:'Medium probability',id:'medium', isedit: false, zeker: true},
-		{title:'Low probability',id:'low', isedit: false, zeker: true}
-	]}
-	,{ beeld: 'communicatie', title: 'Communication', timestamp: 0, beeldonderdeel: 
-	  [ {title:'Main messages',id:'main', isedit: false, zeker: true},
-		{title:'Context and environment',id:'environment', isedit: false, zeker: true}
-	]}
+			{ beeld: 'PLN', title: 'Planning', timestamp: 0, beeldonderdeel: [ 
+			    {title:'Timeline',id:'timeline', isedit: false, zeker: true},
+				{title:'Notifications',id:'notifications', isedit: false, zeker: true},
+				{title:'Report',id:'remarks', isedit: false, zeker: true}
+			]}
+			,{ beeld: 'CO', title: 'Current Operations', timestamp: 0, beeldonderdeel: [ 
+			    {title:'Timeline',id:'timeline', isedit: false, zeker: true},
+				{title:'Notifications',id:'notifications', isedit: false, zeker: true},
+				{title:'Report',id:'remarks', isedit: false, zeker: true}
+			]}
+			,{ beeld: 'DS', title: 'Direct Support', timestamp: 0, beeldonderdeel: [ 
+			    {title:'Timeline',id:'timeline', isedit: false, zeker: true},
+				{title:'Notifications',id:'notifications', isedit: false, zeker: true},
+				{title:'Report',id:'remarks', isedit: false, zeker: true}
+			]}        
+			,{ beeld: 'GS', title: 'General Support', timestamp: 0, beeldonderdeel: [ 
+			    {title:'Timeline',id:'timeline', isedit: false, zeker: true},
+				{title:'Notifications',id:'notifications', isedit: false, zeker: true},
+				{title:'Report',id:'remarks', isedit: false, zeker: true}
+			]}
+  ],
+  "templates":[
+	{	id:0,
+		"name":"HHNK",
+		"description":"Waterboard Layout",
+		"beelden":[	// Translated ICM layout
+			{ beeld: 'summary', title: 'Situatiebeeld Water', timestamp: 0, beeldonderdeel: 
+			  [ {id:'situatie', title: 'Situatie', isedit: false, zeker: true}
+			  ]}    
+			,{ beeld: 'meldingen', title: 'Meldingen', timestamp: 0, beeldonderdeel: 
+			  [ {title:'Tijdlijn',id:'Tijdlijn', isedit: false, zeker: true},
+				{title:'Meldingen beeld',id:'meldingen' , isedit: false, zeker: true},
+				{title: 'Acute meldingen', id:'acuut', isedit: false, zeker: true},
+				{title: 'Situatie Plaats Incident',id: 'spi', isedit: false, zeker: true} ,
+				{title: 'Genomen acties',id:'acties' , isedit: false, zeker: true}
+			]}
+			,{ beeld: 'wat', title: 'Operationeel (WAT)', timestamp: 0, beeldonderdeel: 
+			  [ {title:'Tijdlijn',id:'tijdlijn', isedit: false, zeker: true},
+				{title:'Beeldvorming',id:'beeldvorming', isedit: false, zeker: true},
+				{title:'Oordeelvorming',id:'oordeelsvorming', isedit: false, zeker: true},
+				{title:'Besluitvorming',id:'besluitsvorming', isedit: false, zeker: true},
+				{title:'Knelpunten',id:'knelpunten', isedit: false, zeker: true},
+				{title:'Acties/maatregelen',id:'maatregelen', isedit: false, zeker: true},
+				{title:'Veiligheid medewerkers',id:'veiligheid', isedit: false, zeker: true},
+				{title:'Prognose (verwachting)',id:'prognose', isedit: false, zeker: true}
+			]}
+			,{ beeld: 'wot', title: 'Tactisch (WOT)', timestamp: 0, beeldonderdeel:
+			  [ {title:'Tijdlijn',id:'tijdlijn', isedit: false, zeker: true},
+				{title:'Beeldvorming',id:'beeldvorming', isedit: false, zeker: true},
+				{title:'Oordeelvorming',id:'oordeelsvorming', isedit: false, zeker: true},
+				{title:'Besluitvorming',id:'besluitsvorming', isedit: false, zeker: true},
+				{title:'Knelpunten',id:'knelpunten', isedit: false, zeker: true},
+				{title:'Acties/maatregelen',id:'maatregelen', isedit: false, zeker: true},          
+				{title:'Prognose (verwachting)',id:'prognose', isedit: false, zeker: true}
+			]}        
+			,{ beeld: 'wbt', title: 'Strategisch (WBT)', timestamp: 0, beeldonderdeel: 
+			  [ {title:'Tijdlijn',id:'tijdlijn', isedit: false, zeker: true},
+				{title:'Beeldvorming',id:'beeldvorming', isedit: false, zeker: true},
+				{title:'Oordeelvorming',id:'oordeelsvorming', isedit: false, zeker: true},
+				{title:'Besluitvorming',id:'besluitsvorming', isedit: false, zeker: true},
+				{title:'Knelpunten',id:'knelpunten', isedit: false, zeker: true},
+				{title:'Acties/maatregelen',id:'maatregelen', isedit: false, zeker: true},          
+				{title:'Prognose (verwachting)',id:'prognose', isedit: false, zeker: true}
+			]}
+			,{ beeld: 'scenarios', title: 'Scenarios\'s\/Maatr.', timestamp: 0, beeldonderdeel: 
+			  [ {title:'Meest waarschijnlijk',id:'meest', isedit: false, zeker: true},
+				{title:'Minder waarschijnlijk',id:'minder', isedit: false, zeker: true},
+				{title:'Minst waarschijnlijk',id:'minst', isedit: false, zeker: true}
+			]}
+			,{ beeld: 'communicatie', title: 'Communicatie', timestamp: 0, beeldonderdeel: 
+			  [ {title:'Kernboodschap',id:'kernboodschap', isedit: false, zeker: true},
+				{title:'Omgevingsbeeld',id:'omgevingsbeeld', isedit: false, zeker: true},
+				{title:'Communicatie vanuit het waterschap',id:'extern', isedit: false, zeker: true},
+				{title:'Communicatie intern het waterschap',id:'intern', isedit: false, zeker: true}
+			]}
+		]
+	}
+	,{	id:1,
+		"name":"ICM",
+		"description":"Translated ICM layout",
+		"beelden":[	
+			{ beeld: 'situation', title: 'Current situation', timestamp: 0, beeldonderdeel: 
+			  [ {id:'summary', title: 'Summary', isedit: false, zeker: true}
+			  ]}    
+			,{ beeld: 'report', title: 'Reports', timestamp: 0, beeldonderdeel: 
+			  [ {title:'Timeline',id:'timeline', isedit: false, zeker: true},
+				{title:'Notifications',id:'notifications' , isedit: false, zeker: true},
+				{title: 'Urgent', id:'urgent', isedit: false, zeker: true},
+				{title: 'Local situation',id: 'place', isedit: false, zeker: true} ,
+				{title: 'Actions/Measures',id:'measures' , isedit: false, zeker: true}
+			]}
+			,{ beeld: 'operation', title: 'Operational team', timestamp: 0, beeldonderdeel: 
+			  [ {title:'Timeline',id:'timeline', isedit: false, zeker: true},
+				{title:'Notifications',id:'notifications', isedit: false, zeker: true},
+				{title:'Remarks',id:'remarks', isedit: false, zeker: true},
+				{title:'Decisions',id:'decisions', isedit: false, zeker: true},
+				{title:'Bottlenecks',id:'bottlenecks', isedit: false, zeker: true},
+				{title:'Actions/Measures',id:'measures', isedit: false, zeker: true},
+				{title:'Safety staff',id:'safety', isedit: false, zeker: true},
+				{title:'Prognose (forecast)',id:'prognose', isedit: false, zeker: true}
+			]}
+			,{ beeld: 'tactic', title: 'Tactical Team', timestamp: 0, beeldonderdeel:
+			  [ {title:'Timeline',id:'timeline', isedit: false, zeker: true},
+				{title:'Notifications',id:'notifications', isedit: false, zeker: true},
+				{title:'Remarks',id:'remarks', isedit: false, zeker: true},
+				{title:'Decisions',id:'decisions', isedit: false, zeker: true},
+				{title:'Bottlenecks',id:'bottlenecks', isedit: false, zeker: true},
+				{title:'Actions/Measures',id:'measures', isedit: false, zeker: true},          
+				{title:'Prognose (forecast)',id:'prognose', isedit: false, zeker: true}
+			]}        
+			,{ beeld: 'strategic', title: 'Strategical team', timestamp: 0, beeldonderdeel: 
+			  [ {title:'Timeline',id:'timeline', isedit: false, zeker: true},
+				{title:'Notifications',id:'notifications', isedit: false, zeker: true},
+				{title:'Remarks',id:'remarks', isedit: false, zeker: true},
+				{title:'Decisions',id:'decisions', isedit: false, zeker: true},
+				{title:'Bottlenecks',id:'bottlenecks', isedit: false, zeker: true},
+				{title:'Actions/Measures',id:'measures', isedit: false, zeker: true},          
+				{title:'Prognose (forecast)',id:'prognose', isedit: false, zeker: true}
+			]}
+			,{ beeld: 'scenarios', title: 'Scenarios', timestamp: 0, beeldonderdeel: 
+			  [ {title:'High probability',id:'high', isedit: false, zeker: true},
+				{title:'Medium probability',id:'medium', isedit: false, zeker: true},
+				{title:'Low probability',id:'low', isedit: false, zeker: true}
+			]}
+			,{ beeld: 'communicatie', title: 'Communication', timestamp: 0, beeldonderdeel: 
+			  [ {title:'Main messages',id:'main', isedit: false, zeker: true},
+				{title:'Context and environment',id:'environment', isedit: false, zeker: true}
+			]}
+		]
+	}
+	,{	id:2,
+		"name":"GeoFort",
+		"description":"GeoFort Teams",
+		"beelden": [
+			{ beeld: 'summary', title: 'Samenvatting', timestamp: 0, beeldonderdeel: 
+			[ {id:'situatie', title: 'Situatie', isedit: false, zeker: true}
+			  ]}          
+			,{ beeld: 'populatie', title: 'Populatie', timestamp: 0, beeldonderdeel: 
+			  [ {title:'Samenvatting',id:'samenvatting', isedit: false, zeker: true}
+			]}
+			,{ beeld: 'evacuatie', title: 'Evacutatie', timestamp: 0, beeldonderdeel:
+			  [ {title:'Samenvatting',id:'samenvatting', isedit: false, zeker: true}
+			]}        
+			,{ beeld: 'opvang', title: 'Opvang', timestamp: 0, beeldonderdeel: 
+			  [ {title:'Samenvatting',id:'samenvatting', isedit: false, zeker: true}
+			]}         
+			,{ beeld: 'comms', title: 'Communicatie', timestamp: 0, beeldonderdeel: 
+			  [ {title:'Samenvatting',id:'kernboodschap', isedit: false, zeker: true}
+			]}	
+		]
+	}
+	,{	id:3,
+		"name":"UniGIS NCW",
+		"description":"UniGIS Net-Centric Working",
+		"beelden": [
+			{ beeld: 'PLN', title: 'Planning', timestamp: 0, beeldonderdeel: [ 
+			    {title:'Timeline',id:'timeline', isedit: false, zeker: true},
+				{title:'Notifications',id:'notifications', isedit: false, zeker: true},
+				{title:'Report',id:'remarks', isedit: false, zeker: true}
+			]}
+			,{ beeld: 'CO', title: 'Current Operations', timestamp: 0, beeldonderdeel: [ 
+			    {title:'Timeline',id:'timeline', isedit: false, zeker: true},
+				{title:'Notifications',id:'notifications', isedit: false, zeker: true},
+				{title:'Report',id:'remarks', isedit: false, zeker: true}
+			]}
+			,{ beeld: 'DS', title: 'Direct Support', timestamp: 0, beeldonderdeel: [ 
+			    {title:'Timeline',id:'timeline', isedit: false, zeker: true},
+				{title:'Notifications',id:'notifications', isedit: false, zeker: true},
+				{title:'Report',id:'remarks', isedit: false, zeker: true}
+			]}        
+			,{ beeld: 'GS', title: 'General Support', timestamp: 0, beeldonderdeel: [ 
+			    {title:'Timeline',id:'timeline', isedit: false, zeker: true},
+				{title:'Notifications',id:'notifications', isedit: false, zeker: true},
+				{title:'Report',id:'remarks', isedit: false, zeker: true}
+			]}
+		]
+	}
+	,{	id:4,
+		"name":"UniGIS DS",
+		"description":"UniGIS DS (Direct Support)",
+		"beelden":[
+			{ beeld: 'DS', title: 'Direct Support', timestamp: 0, beeldonderdeel: [ 
+			    {title:'Timeline',id:'timeline', isedit: false, zeker: true},
+				{title:'Notifications',id:'notifications', isedit: false, zeker: true},
+				{title:'Report',id:'remarks', isedit: false, zeker: true}
+			]} 
+		]
+	}
+	,{	id:5,
+		"name":"UniGIS GS",
+		"description":"UniGIS GS (General Support)",
+		"beelden":[
+			{ beeld: 'GS', title: 'General Support', timestamp: 0, beeldonderdeel: [ 
+			    {title:'Timeline',id:'timeline', isedit: false, zeker: true},
+				{title:'Notifications',id:'notifications', isedit: false, zeker: true},
+				{title:'Report',id:'remarks', isedit: false, zeker: true}
+			]}
+		]
+	}
+	,{	id:6,
+		"name":"UniGIS CO",
+		"description":"UniGIS CO (Current Operations)",
+		"beelden":[
+			{ beeld: 'CO', title: 'Current Operations', timestamp: 0, beeldonderdeel: [ 
+			    {title:'Timeline',id:'timeline', isedit: false, zeker: true},
+				{title:'Notifications',id:'notifications', isedit: false, zeker: true},
+				{title:'Report',id:'remarks', isedit: false, zeker: true}
+			]}
+		]
+	}
+	,{	id:7,
+		"name":"UniGIS PLN",
+		"description":"UniGIS PLN (Planning)",
+		"beelden":[
+			{ beeld: 'PLN', title: 'Planning', timestamp: 0, beeldonderdeel: [ 
+			    {title:'Timeline',id:'timeline', isedit: false, zeker: true},
+				{title:'Notifications',id:'notifications', isedit: false, zeker: true},
+				{title:'Report',id:'remarks', isedit: false, zeker: true}
+			]}
+		]
+	}
+	,{	id:8,
+		"name":"Teams NCW",
+		"description":"Teams Net-Centric Working",
+		"beelden":[
+			{ beeld: 'FRM', title: 'Firemen', timestamp: 0, beeldonderdeel: [ 
+			    {title:'Timeline',id:'timeline', isedit: false, zeker: true},
+				{title:'Notifications',id:'notifications', isedit: false, zeker: true},
+				{title:'Report',id:'remarks', isedit: false, zeker: true}
+			]}
+			,{ beeld: 'MED', title: 'Ambulances', timestamp: 0, beeldonderdeel: [ 
+			    {title:'Timeline',id:'timeline', isedit: false, zeker: true},
+				{title:'Notifications',id:'notifications', isedit: false, zeker: true},
+				{title:'Report',id:'remarks', isedit: false, zeker: true}
+			]}
+			,{ beeld: 'POL', title: 'Police', timestamp: 0, beeldonderdeel: [ 
+			    {title:'Timeline',id:'timeline', isedit: false, zeker: true},
+				{title:'Notifications',id:'notifications', isedit: false, zeker: true},
+				{title:'Report',id:'remarks', isedit: false, zeker: true}
+			]}        
+			,{ beeld: 'IFS', title: 'Infrastructure', timestamp: 0, beeldonderdeel: [ 
+			    {title:'Timeline',id:'timeline', isedit: false, zeker: true},
+				{title:'Notifications',id:'notifications', isedit: false, zeker: true},
+				{title:'Report',id:'remarks', isedit: false, zeker: true}
+			]}
+		]
+	}
+	,{	id:9,
+		"name":"Teams Firemen",
+		"description":"Teams Firemen",
+		"beelden":[
+			{ beeld: 'FRM', title: 'Firemen', timestamp: 0, beeldonderdeel: [ 
+			    {title:'Timeline',id:'timeline', isedit: false, zeker: true},
+				{title:'Notifications',id:'notifications', isedit: false, zeker: true},
+				{title:'Report',id:'remarks', isedit: false, zeker: true}
+			]}
+		]
+	}
+	,{	id:10,
+		"name":"Teams Ambulances",
+		"description":"Teams Ambulances",
+		"beelden":[
+			{ beeld: 'MED', title: 'Ambulances', timestamp: 0, beeldonderdeel: [ 
+			    {title:'Timeline',id:'timeline', isedit: false, zeker: true},
+				{title:'Notifications',id:'notifications', isedit: false, zeker: true},
+				{title:'Report',id:'remarks', isedit: false, zeker: true}
+			]}
+		]
+	}
+	,{	id:11,
+		"name":"Teams Police",
+		"description":"Teams Police",
+		"beelden":[
+			{ beeld: 'POL', title: 'Police', timestamp: 0, beeldonderdeel: [ 
+			    {title:'Timeline',id:'timeline', isedit: false, zeker: true},
+				{title:'Notifications',id:'notifications', isedit: false, zeker: true},
+				{title:'Report',id:'remarks', isedit: false, zeker: true}
+			]} 
+		]
+	}
+	,{	id:12,
+		"name":"Teams Infrastructure",
+		"description":"Teams Infrastructure",
+		"beelden":[
+			{ beeld: 'IFS', title: 'Infrastructure', timestamp: 0, beeldonderdeel: [ 
+			    {title:'Timeline',id:'timeline', isedit: false, zeker: true},
+				{title:'Notifications',id:'notifications', isedit: false, zeker: true},
+				{title:'Report',id:'remarks', isedit: false, zeker: true}
+			]}
+		]
+	}
    ],
    drawstyles:{
       linestyles:  [
@@ -124,15 +368,172 @@ var icmconfig = {
   },
   "layers":
   {
-      "ahn1": {"type": "overlay", "category": "Terrain", "layer": {"type":"betterwms","visible":true,"name":"Height map","url":"http://t3.edugis.nl/tiles/tilecache.py?map=maps/edugis/cache/hoogte.map","layerOptions":{"layers":"hoogtes","format":"image/png","transparent":true,"opacity":0.8}}}//,
 
-	  // "brp":  {"type": "overlay", "category": "External", "layer": {"type": "betterwms","visible": true, "name": "Crop parcels","url": "http://research.geodan.nl/service/ngr/brpgewaspercelen/wms","layerOptions": {"layers": "brpgewaspercelen","format": "image/png","transparent": true}}},
+		"ahn1": {
+			"type": "overlay", 
+			"category": "Terrain", 
+			"layer": {
+				"type":"betterwms",
+				"visible":true,
+				"name":"Height map",
+				"url":"http://t3.edugis.nl/tiles/tilecache.py?map=maps/edugis/cache/hoogte.map",
+				"layerOptions": {
+					"layers":"hoogtes",
+					"format":"image/png",
+					"transparent":true,
+					"opacity":0.8
+				}
+			}
+		}
+		
+		, pand: {
+			type: 'overlay', 
+			category: 'BAG', 
+			layer: { 
+				name: "Pand: Building footprints (Zoom in)",
+				type:  'betterwms',
+				url: "/ngr/bag/wms",
+				visible: true,
+				layerOptions: {
+					layers: 'pand',
+					format: 'image/png',
+					transparent: true,
+					opacity: 0.85
+				}
+			}
+		}
+		
+		, ligplaats: {
+			type: 'overlay', 
+			category: 'BAG', 
+			layer: { 
+				name: "Ligplaats: Floating houses  (Zoom in)",
+				type:  'betterwms',
+				url: "/ngr/bag/wms",
+				visible: true,
+				layerOptions: {
+					layers: 'ligplaats',
+					format: 'image/png',
+					transparent: true,
+					opacity: 0.85
+				}
+			}
+		}
+		
+		, "ahn2_05m_int": {
+			"type": "overlay", 
+			"category": "AHN2", 
+			"layer": {
+				"type":"betterwms",
+				"visible":true,
+				"name":"Height map 0.5m interpolated",
+				"url":"/ngr/ahn2/wms",
+				"layerOptions": {
+					"layers":"ahn2_05m_int",
+					"format":"image/png",
+					"transparent":true,
+					"opacity":0.8
+				}
+			}
+		}
+		
+		, "ahn2_05m_non": {
+			"type": "overlay", 
+			"category": "AHN2", 
+			"layer": {
+				"type":"betterwms",
+				"visible":true,
+				"name":"Height map 0.5m no interpolated",
+				"url":"/ngr/ahn2/wms",
+				"layerOptions": {
+					"layers":"ahn2_05m_non",
+					"format":"image/png",
+					"transparent":true,
+					"opacity":0.8
+				}
+			}
+		}
+		
+		, "ahn2_05m_ruw": {
+			"type": "overlay", 
+			"category": "AHN2", 
+			"layer": {
+				"type":"betterwms",
+				"visible":true,
+				"name":"Height map 0.5m (with buildings)",
+				"url":"/ngr/ahn2/wms",
+				"layerOptions": {
+					"layers":"ahn2_05m_ruw",
+					"format":"image/png",
+					"transparent":true,
+					"opacity":0.8
+				}
+			}
+		}
+		
+		, "ahn2_5m": {
+			"type": "overlay", 
+			"category": "AHN2", 
+			"layer": {
+				"type":"betterwms",
+				"visible":true,
+				"name":"Height map 5m (with buildings)",
+				"url":"/ngr/ahn2/wms",
+				"layerOptions": {
+					"layers":"ahn2_05m_ruw",
+					"format":"image/png",
+					"transparent":true,
+					"opacity":0.8
+				}
+			}
+		}
+
+		, "brp": {
+			"type": "overlay", 
+			"category": "BRP", 
+			"layer": {
+				"type": "betterwms",
+				"visible": true, 
+				"name": "Crop parcels", 
+				"url": "/ngr/brpgewaspercelen/wms", 
+				"layerOptions": {
+					"layers": "brpgewaspercelen",
+					"format": "image/png", 
+					"transparent": true
+				}
+			}
+		}
+	
+
+	
+	
+	
+      // "ahn1": {"type": "overlay", "category": "Terrain", "layer": {"type":"betterwms","visible":true,"name":"Height map","url":"http://t3.edugis.nl/tiles/tilecache.py?map=maps/edugis/cache/hoogte.map","layerOptions":{"layers":"hoogtes","format":"image/png","transparent":true,"opacity":0.8}}}//,
+
+	  // "brp": {
+		// "type": "overlay", 
+		// "category": "External", 
+		// "layer": {
+			// "type": "betterwms",
+			// "visible": true, 
+			// "name": "Crop parcels", 
+			// "url": "http://research.geodan.nl/service/ngr/brpgewaspercelen/wms", 
+			// "layerOptions": {
+				// "layers": "brpgewaspercelen",
+				// "format": "image/png", 
+				// "transparent": true
+			// }
+		// }
+	  // },
 
 	  // zwemwater:{type: 'overlay', category: 'External', layer: {type: 'betterwms',visible: true, name: "Bathing locations",url: 'http://www.zwemwater.nl/zwr-ogc/services/zwr-wms',layerOptions: {layers: 'zwemwaterlocatie',format: 'image/png',transparent: true}}},
 
-	  // zw_gebied:{type: 'overlay', category: 'External', layer: {type: 'betterwms',visible: true, name: "Bathing Areas",url: 'http://www.zwemwater.nl/zwr-ogc/services/zwr-wms',layerOptions: {layers: 'gebied',format: 'image/png',transparent: true}}},
+	  // zw_gebied: {type: 'overlay', category: 'External', layer: {type: 'betterwms',visible: true, name: "Bathing Areas",url: 'http://www.zwemwater.nl/zwr-ogc/services/zwr-wms',layerOptions: {layers: 'gebied',format: 'image/png',transparent: true}}},
 
-	  // golffront: {type: 'overlay', category: '3Di', layer:{ 
+	  // golffront: {
+		// type: 'overlay', 
+		// category: '3Di', 
+		// layer: { 
 				// name: "Wave front",
 				// type:  'betterwms',
 				// url: "http://result.3di.lizard.net/3di/wms",
@@ -145,7 +546,10 @@ var icmconfig = {
 			// }
 		// },
 
-		// waterdepth: {type: 'overlay', category: '3Di', layer:{ 
+		// waterdepth: {
+			// type: 'overlay', 
+			// category: '3Di', 
+			// layer: { 
 				// name: "Water depth",
 				// type:  'betterwms',
 				// url: "http://result.3di.lizard.net/3di/wms",
@@ -157,8 +561,11 @@ var icmconfig = {
 				// }
 			// }
 		// }
+
   }
 };
+
+
 
 
 var addCameraLayers = function(LeafletService,map){
@@ -269,16 +676,16 @@ var addGeofortLayers = function(LeafletService,map){
          style: function (feature) {
              var style = {};
              if (feature.properties.tijdstip == 'after 4 hours'){
-                 style.opacity  = 0.2;
+                 style.opacity  = 0.1;
              }
              else if (feature.properties.tijdstip == 'after 8 hours'){
-                 style.opacity  = 0.4;
+                 style.opacity  = 0.3;
              }
              else if (feature.properties.tijdstip == 'after 12 hours'){
                  style.opacity  = 0.6;
              }
              else if (feature.properties.tijdstip == 'after 16 hours'){
-                 style.opacity  = 0.8;
+                 style.opacity  = 0.9;
              }
              //style.fillOpacity = 0;
              style.fillColor = "None";
@@ -288,7 +695,7 @@ var addGeofortLayers = function(LeafletService,map){
              layer.bindPopup(feature.properties.tijdstip);
          }
      }).addTo(map);
-     floodlayer.name = 'Model Output';
+     floodlayer.name = 'Flood Model Output';
      floodlayer.buttonclass = true;
      LeafletService.layers.icmlayers.floodlayer = floodlayer;
      //self.layercontrol.addOverlay(floodlayer,"Inundatie");
@@ -334,7 +741,7 @@ var addGeofortLayers = function(LeafletService,map){
          }
      });
      kwetsbareobjectenlayer.buttonclass = false;
-     kwetsbareobjectenlayer.name = 'Kwetsbare objecten';
+     kwetsbareobjectenlayer.name = 'Vulnerable objects';
      LeafletService.layers.icmlayers.kwetsbareobjectenlayer = kwetsbareobjectenlayer;
      //self.layercontrol.addOverlay(kwetsbareobjectenlayer,"Kwetsbare objecten");
      d3.json('./data/kwetsbareobjecten.geojson',function(data){
@@ -356,7 +763,7 @@ var addGeofortLayers = function(LeafletService,map){
              layer.bindPopup(feature.properties.omschrijvi);
          }
      });
-     opvanglocatieslayer.name = 'Opvanglocaties';
+     opvanglocatieslayer.name = 'Shelter locations';
      opvanglocatieslayer.buttonclass = false;
      LeafletService.layers.icmlayers.opvanglocatieslayer = opvanglocatieslayer;
      //self.layercontrol.addOverlay(opvanglocatieslayer,"Openbare functies");
