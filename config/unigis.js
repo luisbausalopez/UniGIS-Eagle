@@ -369,7 +369,7 @@ var icmconfig = {
   "layers":
   {
 
-		"ahn1": {
+		"AHN1_hoogtes": {
 			"type": "overlay", 
 			"category": "Terrain", 
 			"layer": {
@@ -386,41 +386,41 @@ var icmconfig = {
 			}
 		}
 		
-		, pand: {
-			type: 'overlay', 
-			category: 'BAG', 
-			layer: { 
-				name: "Pand: Building footprints (Zoom in)",
-				type:  'betterwms',
-				url: "/ngr/bag/wms",
-				visible: true,
-				layerOptions: {
-					layers: 'pand',
-					format: 'image/png',
-					transparent: true,
-					opacity: 0.85
+		, "BAG_pand": {
+			"type": "overlay", 
+			"category": "BAG", 
+			"layer": {
+				"type":"betterwms",
+				"visible":true,
+				"name":"Pand: Building footprints (Zoom in)",
+				"url":"/ngr/bag/wms",
+				"layerOptions": {
+					"layers":"pand",
+					"format":"image/png",
+					"transparent":true,
+					"opacity":0.85
 				}
 			}
 		}
 		
-		, ligplaats: {
-			type: 'overlay', 
-			category: 'BAG', 
-			layer: { 
-				name: "Ligplaats: Floating houses  (Zoom in)",
-				type:  'betterwms',
-				url: "/ngr/bag/wms",
-				visible: true,
-				layerOptions: {
-					layers: 'ligplaats',
-					format: 'image/png',
-					transparent: true,
-					opacity: 0.85
+		, "BAG_ligplaats": {
+			"type": "overlay", 
+			"category": "BAG", 
+			"layer": {
+				"type":"betterwms",
+				"visible":true,
+				"name":"Ligplaats: Floating houses  (Zoom in)",
+				"url":"/ngr/bag/wms",
+				"layerOptions": {
+					"layers":"ligplaats",
+					"format":"image/png",
+					"transparent":true,
+					"opacity":0.85
 				}
 			}
 		}
 		
-		, "standplaats": {
+		, "BAG_standplaats": {
 			"type": "overlay", 
 			"category": "BAG", 
 			"layer": {
@@ -437,7 +437,7 @@ var icmconfig = {
 			}
 		}
 		
-		, "verblijfsobject": {
+		, "BAG_verblijfsobject": {
 			"type": "overlay", 
 			"category": "BAG", 
 			"layer": {
@@ -454,7 +454,7 @@ var icmconfig = {
 			}
 		}
 		
-		, "woonplaats": {
+		, "BAG_woonplaats": {
 			"type": "overlay", 
 			"category": "BAG", 
 			"layer": {
@@ -471,7 +471,7 @@ var icmconfig = {
 			}
 		}
 		
-		, "ahn2_05m_int": {
+		, "AHN2_05m_int": {
 			"type": "overlay", 
 			"category": "AHN2", 
 			"layer": {
@@ -488,7 +488,7 @@ var icmconfig = {
 			}
 		}
 		
-		, "ahn2_05m_non": {
+		, "AHN2_05m_non": {
 			"type": "overlay", 
 			"category": "AHN2", 
 			"layer": {
@@ -505,7 +505,7 @@ var icmconfig = {
 			}
 		}
 		
-		, "ahn2_05m_ruw": {
+		, "AHN2_05m_ruw": {
 			"type": "overlay", 
 			"category": "AHN2", 
 			"layer": {
@@ -522,7 +522,7 @@ var icmconfig = {
 			}
 		}
 		
-		, "ahn2_5m": {
+		, "AHN2_5m": {
 			"type": "overlay", 
 			"category": "AHN2", 
 			"layer": {
@@ -539,7 +539,7 @@ var icmconfig = {
 			}
 		}
 		
-		, "ahn2_bladindex": {
+		, "AHN2_bladindex": {
 			"type": "overlay", 
 			"category": "AHN2", 
 			"layer": {
@@ -556,7 +556,7 @@ var icmconfig = {
 			}
 		}
 		
-		, "wegdeelvlakken": {
+		, "TOP10NL_wegdeelvlakken": {
 			"type": "overlay", 
 			"category": "TOP10NL", 
 			"layer": {
@@ -573,7 +573,7 @@ var icmconfig = {
 			}
 		}
 		
-		, "waterdeellijnen": {
+		, "TOP10NL_waterdeellijnen": {
 			"type": "overlay", 
 			"category": "TOP10NL", 
 			"layer": {
@@ -590,7 +590,7 @@ var icmconfig = {
 			}
 		}
 		
-		, "waterdeel_vlakken": {
+		, "TOP10NL_waterdeel_vlakken": {
 			"type": "overlay", 
 			"category": "TOP10NL", 
 			"layer": {
@@ -607,7 +607,7 @@ var icmconfig = {
 			}
 		}
 		
-		, "terreinen": {
+		, "TOP10NL_terreinen": {
 			"type": "overlay", 
 			"category": "TOP10NL", 
 			"layer": {
@@ -624,7 +624,7 @@ var icmconfig = {
 			}
 		}
 		
-		, "spoorbaandeel_lijnen": {
+		, "TOP10NL_spoorbaandeel_lijnen": {
 			"type": "overlay", 
 			"category": "TOP10NL", 
 			"layer": {
@@ -641,7 +641,7 @@ var icmconfig = {
 			}
 		}
 		
-		, "inrichtingselementlijnen": {
+		, "TOP10NL_inrichtingselementlijnen": {
 			"type": "overlay", 
 			"category": "TOP10NL", 
 			"layer": {
@@ -658,7 +658,7 @@ var icmconfig = {
 			}
 		}
 		
-		, "inrichtingselement_punten": {
+		, "TOP10NL_inrichtingselement_punten": {
 			"type": "overlay", 
 			"category": "TOP10NL", 
 			"layer": {
@@ -675,7 +675,7 @@ var icmconfig = {
 			}
 		}
 		
-		, "geo_labels": {
+		, "TOP10NL_geo_labels": {
 			"type": "overlay", 
 			"category": "TOP10NL", 
 			"layer": {
@@ -692,7 +692,7 @@ var icmconfig = {
 			}
 		}
 		
-		, "gebouwen": {
+		, "TOP10NL_gebouwen": {
 			"type": "overlay", 
 			"category": "TOP10NL", 
 			"layer": {
@@ -709,7 +709,7 @@ var icmconfig = {
 			}
 		}
 		
-		, "functioneelgebied_labels": {
+		, "TOP10NL_functioneelgebied_labels": {
 			"type": "overlay", 
 			"category": "TOP10NL", 
 			"layer": {
@@ -726,7 +726,7 @@ var icmconfig = {
 			}
 		}
 
-		, "brp": {
+		, "BRP_brpgewaspercelen": {
 			"type": "overlay", 
 			"category": "BRP", 
 			"layer": {
