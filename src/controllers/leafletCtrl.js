@@ -633,7 +633,7 @@ icm.controller('LeafletController', [ '$scope','$http','$timeout','Core', 'Utils
 		
         /** Add Cameras layer **/
 		// map.addLayer(cameraLayer);
-		addCameraLayers(LeafletService,map);
+		// addCameraLayers(LeafletService,map);
 
         /** Add geofort layers **/
         // addGeofortLayers(LeafletService,map); //FIXME
