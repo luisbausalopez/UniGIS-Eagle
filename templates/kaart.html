@@ -16,7 +16,7 @@
         </button>
       </div>
       <div class="btn-group">
-        <button ng-model="radioModel" type="button" class="btn btn-default btn-lg" ng-click="drawPoint(currentstyle.icon)" btn-radio="'point'" title="Teken een punt"><img alt="" height="20" ng-src="./images/mapicons/{{currentstyle.icon.url}}"/></button>
+        <button ng-model="radioModel" type="button" class="btn btn-default btn-lg" ng-click="drawPoint(currentstyle.icon)" btn-radio="'point'" title="Place Marker"><img alt="" height="20" ng-src="./images/mapicons/{{currentstyle.icon.url}}"/></button>
         <button type="button" class="btn btn-default dropdown-toggle btn-lg" id="dropdownMenu1" data-toggle="dropdown">
           <span class="caret"></span>
           <span class="sr-only">Toggle Dropdown</span>
@@ -33,7 +33,7 @@
       </div>
       
       <div class="btn-group">
-        <button ng-model="radioModel" type="button" class="btn btn-default btn-lg"  ng-click="drawLine(currentstyle.line)" btn-radio="'line'" title="Teken een lijn"> 
+        <button ng-model="radioModel" type="button" class="btn btn-default btn-lg"  ng-click="drawLine(currentstyle.line)" btn-radio="'line'" title="Draw route"> 
             <svg viewBox="0 0 27 27" width="18" height="18" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:svg="http://www.w3.org/2000/svg"    xmlns="http://www.w3.org/2000/svg" version="1.1">
                 <g transform="translate(-27.086869,-417.52882)">
                     <path ng-style="{'stroke':currentstyle.line.stroke,'stroke-width':2,'fill':'none'}" transform="translate(27.086869,429.63625)" d="M 7.3188002,12.071144 23.749999,2.4282866 10.267857,-1.9467135 20.401786,-5.8306419"  />
@@ -60,7 +60,7 @@
       </div> 
 
       <div class="btn-group">
-        <button ng-model="radioModel" type="button" class="btn btn-default btn-lg" ng-click="drawPolygon(currentstyle.polygon)" btn-radio="'polygon'" title="Teken een vlak">  
+        <button ng-model="radioModel" type="button" class="btn btn-default btn-lg" ng-click="drawPolygon(currentstyle.polygon)" btn-radio="'polygon'" title="Draw polygon">  
             <svg viewBox="0 0 27 27" width="18" height="18" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#"    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:svg="http://www.w3.org/2000/svg"    xmlns="http://www.w3.org/2000/svg" version="1.1">
                 <g transform="translate(-27.086869,-417.52882)">
                     <path ng-style="{'fill':currentstyle.polygon.fill,'fill-opacity':0.7,'stroke':currentstyle.polygon.stroke,'stroke-width':1}" d="M 2.7731138,5.3788833 14.252526,11.064017 26.527918,3.1859009 20.874459,-6.2398619 7.3960719,-3.9366059 z" transform="translate(27.086869,429.63625)" />
