@@ -6,25 +6,33 @@ var icmconfig = {
         zoom: 8
   },
   "beelden":[
-			{ beeld: 'PLN', title: 'Planning', timestamp: 0, beeldonderdeel: [ 
+			{ beeld: 'MGT', title: 'Management', timestamp: 0, beeldonderdeel: [ 
 			    {title:'Timeline',id:'timeline', isedit: false, zeker: true},
-				{title:'Notifications',id:'notifications', isedit: false, zeker: true},
-				{title:'Report',id:'remarks', isedit: false, zeker: true}
+				{title:'Summary',id:'summary', isedit: false, zeker: true},
+			    {title:'COM. GS',id:'comgs', isedit: false, zeker: true},
+				{title:'COM DS',id:'comds', isedit: false, zeker: true},
+				{title:'COM PLN',id:'compln', isedit: false, zeker: true},
+				{title:'COM CO',id:'comco', isedit: false, zeker: true}
 			]}
-			,{ beeld: 'CO', title: 'Current Operations', timestamp: 0, beeldonderdeel: [ 
+			,{ beeld: 'GS', title: 'General Support', timestamp: 0, beeldonderdeel: [ 
 			    {title:'Timeline',id:'timeline', isedit: false, zeker: true},
 				{title:'Notifications',id:'notifications', isedit: false, zeker: true},
-				{title:'Report',id:'remarks', isedit: false, zeker: true}
+				{title:'Report',id:'report', isedit: false, zeker: true}
 			]}
 			,{ beeld: 'DS', title: 'Direct Support', timestamp: 0, beeldonderdeel: [ 
 			    {title:'Timeline',id:'timeline', isedit: false, zeker: true},
 				{title:'Notifications',id:'notifications', isedit: false, zeker: true},
-				{title:'Report',id:'remarks', isedit: false, zeker: true}
-			]}        
-			,{ beeld: 'GS', title: 'General Support', timestamp: 0, beeldonderdeel: [ 
+				{title:'Report',id:'report', isedit: false, zeker: true}
+			]}
+			,{ beeld: 'PLN', title: 'Planning', timestamp: 0, beeldonderdeel: [ 
 			    {title:'Timeline',id:'timeline', isedit: false, zeker: true},
 				{title:'Notifications',id:'notifications', isedit: false, zeker: true},
-				{title:'Report',id:'remarks', isedit: false, zeker: true}
+				{title:'Report',id:'report', isedit: false, zeker: true}
+			]}
+			,{ beeld: 'CO', title: 'Current Operations', timestamp: 0, beeldonderdeel: [ 
+			    {title:'Timeline',id:'timeline', isedit: false, zeker: true},
+				{title:'Notifications',id:'notifications', isedit: false, zeker: true},
+				{title:'Report',id:'report', isedit: false, zeker: true}
 			]}
   ],
   "templates":[
