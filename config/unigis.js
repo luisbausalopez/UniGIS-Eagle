@@ -9,7 +9,7 @@ var icmconfig = {
 			{ beeld: 'MGT', title: 'Management', timestamp: 0, beeldonderdeel: [ 
 			    {title:'Timeline',id:'timeline', isedit: false, zeker: true},
 				{title:'Summary',id:'summary', isedit: false, zeker: true},
-			    {title:'COM. GS',id:'comgs', isedit: false, zeker: true},
+			    {title:'COM GS',id:'comgs', isedit: false, zeker: true},
 				{title:'COM DS',id:'comds', isedit: false, zeker: true},
 				{title:'COM PLN',id:'compln', isedit: false, zeker: true},
 				{title:'COM CO',id:'comco', isedit: false, zeker: true}
