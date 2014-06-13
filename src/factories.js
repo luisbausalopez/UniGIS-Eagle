@@ -273,7 +273,7 @@ icm.directive('myCurrentLocation', ['$interval', '$rootScope', function($interva
 			});
 		}
         updateLocation(); // update DOM
-      }, 10000);
+      }, 30000);
     }
 
     return {
