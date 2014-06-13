@@ -409,7 +409,7 @@ var icmconfig = {
 				"type":"betterwms",
 				"visible":true,
 				"name":"Pand: Building footprints (Zoom in)",
-				"url":"/services/ngr/bag/wms",
+				"url":"/service/ngr/bag/wms",
 				"layerOptions": {
 					"layers":"pand",
 					"format":"image/png",
@@ -426,7 +426,7 @@ var icmconfig = {
 				"type":"betterwms",
 				"visible":true,
 				"name":"Ligplaats: Floating houses  (Zoom in)",
-				"url":"/services/ngr/bag/wms",
+				"url":"/service/ngr/bag/wms",
 				"layerOptions": {
 					"layers":"ligplaats",
 					"format":"image/png",
@@ -443,7 +443,7 @@ var icmconfig = {
 				"type":"betterwms",
 				"visible":true,
 				"name":"standplaats",
-				"url":"/services/ngr/bag/wms",
+				"url":"/service/ngr/bag/wms",
 				"layerOptions": {
 					"layers":"standplaats",
 					"format":"image/png",
@@ -460,7 +460,7 @@ var icmconfig = {
 				"type":"betterwms",
 				"visible":true,
 				"name":"verblijfsobject",
-				"url":"/services/ngr/bag/wms",
+				"url":"/service/ngr/bag/wms",
 				"layerOptions": {
 					"layers":"verblijfsobject",
 					"format":"image/png",
@@ -477,7 +477,7 @@ var icmconfig = {
 				"type":"betterwms",
 				"visible":true,
 				"name":"woonplaats",
-				"url":"/services/ngr/bag/wms",
+				"url":"/service/ngr/bag/wms",
 				"layerOptions": {
 					"layers":"woonplaats",
 					"format":"image/png",
@@ -494,7 +494,7 @@ var icmconfig = {
 				"type":"betterwms",
 				"visible":true,
 				"name":"Height map 0.5m interpolated",
-				"url":"/services/ngr/ahn2/wms",
+				"url":"/service/ngr/ahn2/wms",
 				"layerOptions": {
 					"layers":"ahn2_05m_int",
 					"format":"image/png",
@@ -511,7 +511,7 @@ var icmconfig = {
 				"type":"betterwms",
 				"visible":true,
 				"name":"Height map 0.5m no interpolated",
-				"url":"/services/ngr/ahn2/wms",
+				"url":"/service/ngr/ahn2/wms",
 				"layerOptions": {
 					"layers":"ahn2_05m_non",
 					"format":"image/png",
@@ -528,7 +528,7 @@ var icmconfig = {
 				"type":"betterwms",
 				"visible":true,
 				"name":"Height map 0.5m (with buildings)",
-				"url":"/services/ngr/ahn2/wms",
+				"url":"/service/ngr/ahn2/wms",
 				"layerOptions": {
 					"layers":"ahn2_05m_ruw",
 					"format":"image/png",
@@ -545,7 +545,7 @@ var icmconfig = {
 				"type":"betterwms",
 				"visible":true,
 				"name":"Height map 5m",
-				"url":"/services/ngr/ahn2/wms",
+				"url":"/service/ngr/ahn2/wms",
 				"layerOptions": {
 					"layers":"ahn2_5m",
 					"format":"image/png",
@@ -562,7 +562,7 @@ var icmconfig = {
 				"type":"betterwms",
 				"visible":true,
 				"name":"ahn2_bladindex",
-				"url":"/services/ngr/ahn2/wms",
+				"url":"/service/ngr/ahn2/wms",
 				"layerOptions": {
 					"layers":"ahn2_bladindex",
 					"format":"image/png",
@@ -579,7 +579,7 @@ var icmconfig = {
 				"type":"betterwms",
 				"visible":true,
 				"name":"wegdeelvlakken",
-				"url":"/services/ngr/top10nl/wms",
+				"url":"/service/ngr/top10nl/wms",
 				"layerOptions": {
 					"layers":"wegdeelvlakken",
 					"format":"image/png",
@@ -596,7 +596,7 @@ var icmconfig = {
 				"type":"betterwms",
 				"visible":true,
 				"name":"waterdeellijnen",
-				"url":"/services/ngr/top10nl/wms",
+				"url":"/service/ngr/top10nl/wms",
 				"layerOptions": {
 					"layers":"waterdeellijnen",
 					"format":"image/png",
@@ -613,7 +613,7 @@ var icmconfig = {
 				"type":"betterwms",
 				"visible":true,
 				"name":"waterdeel_vlakken",
-				"url":"/services/ngr/top10nl/wms",
+				"url":"/service/ngr/top10nl/wms",
 				"layerOptions": {
 					"layers":"waterdeel_vlakken",
 					"format":"image/png",
@@ -630,7 +630,7 @@ var icmconfig = {
 				"type":"betterwms",
 				"visible":true,
 				"name":"terreinen",
-				"url":"/services/ngr/top10nl/wms",
+				"url":"/service/ngr/top10nl/wms",
 				"layerOptions": {
 					"layers":"terreinen",
 					"format":"image/png",
@@ -647,7 +647,7 @@ var icmconfig = {
 				"type":"betterwms",
 				"visible":true,
 				"name":"spoorbaandeel_lijnen",
-				"url":"/services/ngr/top10nl/wms",
+				"url":"/service/ngr/top10nl/wms",
 				"layerOptions": {
 					"layers":"spoorbaandeel_lijnen",
 					"format":"image/png",
@@ -664,7 +664,7 @@ var icmconfig = {
 				"type":"betterwms",
 				"visible":true,
 				"name":"inrichtingselementlijnen",
-				"url":"/services/ngr/top10nl/wms",
+				"url":"/service/ngr/top10nl/wms",
 				"layerOptions": {
 					"layers":"inrichtingselementlijnen",
 					"format":"image/png",
@@ -681,7 +681,7 @@ var icmconfig = {
 				"type":"betterwms",
 				"visible":true,
 				"name":"inrichtingselement_punten",
-				"url":"/services/ngr/top10nl/wms",
+				"url":"/service/ngr/top10nl/wms",
 				"layerOptions": {
 					"layers":"inrichtingselement_punten",
 					"format":"image/png",
@@ -698,7 +698,7 @@ var icmconfig = {
 				"type":"betterwms",
 				"visible":true,
 				"name":"geo_labels",
-				"url":"/services/ngr/top10nl/wms",
+				"url":"/service/ngr/top10nl/wms",
 				"layerOptions": {
 					"layers":"geo_labels",
 					"format":"image/png",
@@ -715,7 +715,7 @@ var icmconfig = {
 				"type":"betterwms",
 				"visible":true,
 				"name":"gebouwen",
-				"url":"/services/ngr/top10nl/wms",
+				"url":"/service/ngr/top10nl/wms",
 				"layerOptions": {
 					"layers":"gebouwen",
 					"format":"image/png",
@@ -732,7 +732,7 @@ var icmconfig = {
 				"type":"betterwms",
 				"visible":true,
 				"name":"functioneelgebied_labels",
-				"url":"/services/ngr/top10nl/wms",
+				"url":"/service/ngr/top10nl/wms",
 				"layerOptions": {
 					"layers":"functioneelgebied_labels",
 					"format":"image/png",
@@ -749,7 +749,7 @@ var icmconfig = {
 				"type": "betterwms",
 				"visible": true, 
 				"name": "Crop parcels", 
-				"url": "/services/ngr/brpgewaspercelen/wms", 
+				"url": "/service/ngr/brpgewaspercelen/wms", 
 				"layerOptions": {
 					"layers": "brpgewaspercelen",
 					"format": "image/png", 
