@@ -902,7 +902,56 @@ var addCameraLayers = function(LeafletService,map){
 };
 
 
+// var addRisicokaart = function(LeafletService,map){
+	// var data = [];
+	
+	// var geojsonMarkerOptions = {
+         // radius: 8,
+         // fillColor: "#ff7800",
+         // color: "#000",
+         // weight: 1,
+         // opacity: 1,
+         // fillOpacity: 0.8
+     // };
+     
+     // var vulnerableobjectslayer = new L.geoJson(data, {
+         // pointToLayer: function(feature, latlng){
+             // return L.circleMarker(latlng, geojsonMarkerOptions);
+         // },
+         // style: function (feature) {
+             // if (feature.properties.PRIORITEIT == 1){
+                 // return {fillColor: 'red'};
+             // }
+             // else if (feature.properties.PRIORITEIT == 2){
+                 // return {fillColor: 'orange'};
+             // }
+             // else if (feature.properties.PRIORITEIT == 3){
+                 // return {fillColor: 'yellow'};
+             // }
+             // else if (feature.properties.PRIORITEIT == 4){
+                 // return {fillColor: 'blue'};
+             // }
+             // else{
+                 // return {fillColor: 'blue'};
+             // }
+         // },
+         // onEachFeature: function (feature, layer) {
+             // layer.bindLabel(feature.properties.ROT_NAAM + "<br>" + (feature.properties.OMSCHRI5 || ''),{ noHide: false });
+             // layer.bindPopup(feature.properties.ROT_NAAM + "<br>" + (feature.properties.OMSCHRI5 || ''));
+         // }
+     // });
+     // vulnerableobjectslayer.buttonclass = false;
+     // vulnerableobjectslayer.name = 'Vulnerable objects';
+     // LeafletService.layers.icmlayers.vulnerableobjectslayer = vulnerableobjectslayer;
+     // //self.layercontrol.addOverlay(kwetsbareobjectenlayer,"Kwetsbare objecten");
+     // // d3.json('./data/risicokaart_vuln.json',function(data){
+     // d3.json('./data/vulnerable_objects_FeaturesT.json',function(data){
+            // var collection = {"type":"FeatureCollection","features":[]};
+             // collection.features = data.features;
+             // vulnerableobjectslayer.addData(collection);
+     // });
 
+// }
 
 
 var addGeofortLayers = function(LeafletService,map){
