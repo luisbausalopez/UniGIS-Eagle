@@ -240,8 +240,8 @@ icm.directive('myCurrentLocation', ['$interval', '$rootScope', function($interva
 					  };
 		cow.peer().data('location', feature).sync();
 
-		console.log ("Lat:"+mylatitude()+", Lon:"+mylongitude()+", Acc:"+myaccuracy());
-		console.log('loc updated at '+getCurrentDate());
+		// console.log ("Lat:"+mylatitude()+", Lon:"+mylongitude()+", Acc:"+myaccuracy());
+		// console.log('loc updated at '+getCurrentDate());
       }
 	  function mylatitude() {
 	    return $rootScope.position.coords.latitude;
@@ -273,7 +273,7 @@ icm.directive('myCurrentLocation', ['$interval', '$rootScope', function($interva
 			});
 		}
         updateLocation(); // update DOM
-      }, 30000);
+      }, 30 * 1000);
     }
 
     return {
