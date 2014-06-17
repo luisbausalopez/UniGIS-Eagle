@@ -456,12 +456,15 @@ icm.controller('LeafletController', [ '$scope','$http','$timeout','Core', 'Utils
     //Toggle overlays
     $scope.toggleOverlay = function(val) {
         var overlays = $scope.layers.overlays;
+        // var legend = $scope.legend;
         var overlayName = val.layer.name;
         if (overlays.hasOwnProperty(overlayName)) {
             delete overlays[overlayName];
+            // legend="";
             val.buttonclass = false;
         } else {
             overlays[overlayName] = val.layer;
+			// legend = val.legend;
             val.buttonclass = true;
         }
     };

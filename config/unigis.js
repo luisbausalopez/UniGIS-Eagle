@@ -536,6 +536,11 @@ var icmconfig = {
 					"opacity":0.8
 				}
 			}
+			// ,"legend": {
+				// "url": "/service/ngr/ahn2/ows?service=WMS&request=GetLegendGraphic&format=image%2Fpng&width=20&height=20&layer=ahn2_05m_ruw",
+				// "legendClass": "info legend",
+				// "position": "bottomleft",
+			// }
 		}
 		
 		, "AHN2_5m": {
